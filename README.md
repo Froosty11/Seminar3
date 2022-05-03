@@ -1,5 +1,11 @@
 # Seminar3-iv1350
 
+Package Diagram 
+
+<img width="1200" alt="Screenshot 2022-05-03 at 11 08 28" src="https://user-images.githubusercontent.com/100201381/166429052-69e6e4c1-3965-44d4-8efc-5aa6258b4a63.png">
+
+
+
 1.1 Interaction Diagram startUp
 
 <img width="770" alt="Screenshot 2022-05-03 at 10 58 30" src="https://user-images.githubusercontent.com/100201381/166428102-d1f3a82b-bbd6-4ee2-be07-5a1e7f41c9b6.png">
