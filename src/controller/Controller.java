@@ -31,9 +31,15 @@ public class Controller {
     }
     public boolean endSale(double paid, String s, String pos){
         SaleDTO dto = currentActive.endSale(s, pos);
-        Receipt r = new Receipt(dto, store);
-        rp.PrintReceipt(r);
-        return act.registerSale(dto);
+        if(paid > dto.getTotal() + dto.getTotalVAT()) {
+            Receipt r = new Receipt(dto, store);
+            System.out.print(paid-dto.getTotal()- dto.getTotalVAT() + " change\n ");
+            rp.PrintReceipt(r);
+            act.registerSale(dto);
+            return true;
+        }
+        return false;
+
     }
     public void terminate(){
         currentActive.terminateSale();

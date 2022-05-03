@@ -67,7 +67,12 @@ public class Sale {
 
     }
     public SaleDTO endSale(String cashier, String POS){
-        SaleDTO thisSale = new SaleDTO(totalPrice, listOfItems, POS, saleID);
+        double totalVAT = 0;
+        for (Item i :
+                listOfItems) {
+            totalVAT += i.VAT * i.itemPrice*i.quantity;
+        }
+        SaleDTO thisSale = new SaleDTO(totalPrice,totalVAT ,listOfItems, POS, saleID);
         this.inProgress = false;
         thisSale.setCashier(cashier);
 

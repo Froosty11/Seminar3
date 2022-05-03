@@ -7,17 +7,20 @@ public class SaleDTO{
 
     private double totalPrice;
     private int saleID;
+
+    private double totalVAT;
     private String cashier; 
     private List<Item> listOfItems = new ArrayList<Item>(); 
     private String pointOfSale;
-    public SaleDTO(double price, List<Item>list, String pos, int i){
+    public SaleDTO(double price, double vat, List<Item>list, String pos, int i){
         this.totalPrice = price;
         this.pointOfSale = pos;
         this.listOfItems = list;
         this.saleID = i;
+        this.totalVAT = vat;
     }
     public SaleDTO copy(){
-        SaleDTO temp = new SaleDTO(this.totalPrice, this.listOfItems, this.pointOfSale, this.saleID);
+        SaleDTO temp = new SaleDTO(this.totalPrice,this.totalVAT, this.listOfItems, this.pointOfSale, this.saleID);
         temp.setCashier(this.cashier);
         return temp;
     }
@@ -40,6 +43,9 @@ public class SaleDTO{
     }
     public double getTotal(){
         return totalPrice;
+    }
+    public double getTotalVAT(){
+        return totalVAT;
     }
     public List<Item> getItems(){
         return listOfItems;
