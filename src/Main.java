@@ -1,6 +1,5 @@
 import controller.Controller;
-import integration.ExternalInventorySystem;
-import integration.View;
+import view.View;
 
 public class Main {
 

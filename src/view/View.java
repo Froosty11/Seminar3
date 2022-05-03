@@ -1,4 +1,4 @@
-package integration;
+package view;
 
 import controller.Controller;
 
