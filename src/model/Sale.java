@@ -18,10 +18,13 @@ public class Sale {
         saleID = rndm.nextInt(10000); // slumpmässigt id- borde kolla om det id;t är använt tidigare. 
 
     }
-    public boolean addItem( int itemID, ExternalInventorySystem ext){
+    public boolean addItem( int barcode, ExternalInventorySystem ext){
+        //could also be called scanItem
+        //takes identifier in form of barCode
         Item gotItem;
-        if(ext.inStock(itemID)){
-            gotItem = ext.getItem(itemID);
+        //addItem can be replaced with Scanning.getItemFromBarcode(barcode);
+        if(ext.inStock(barcode)){
+            gotItem = ext.getItem(barcode);
             gotItem = new Item(gotItem);
             //if it's already an item in the current sale
             int nmr = 0;
