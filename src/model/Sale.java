@@ -18,7 +18,48 @@ public class Sale {
         saleID = rndm.nextInt(10000); // slumpmässigt id- borde kolla om det id;t är använt tidigare. 
 
     }
+    boolean addItem(Item item, ExternalInventorySystem ext){ // new addItem function taking into account that we now have Scanning
+        boolean truth = false;
+        if(ext.inStock(item.itemID)){
+            for (Item i:
+                    listOfItems) {
+                if(i.itemID == item.itemID){
+                    i.quantity+= item.quantity;
+                    truth = true;
+                }
+            }
+            if(!truth){
+                listOfItems.add(item);
+            }
+            totalPrice+=item.itemPrice*item.quantity;
+            return true;
+        }
+        return false;
+
+    }
+    /*boolean addItems(Item item, ExternalInventorySystem ext, int count){
+        boolean truth = false;
+        boolean ret = false;
+        if(ext.inStock(item.itemID, count)){
+            ret = true;
+            for(int j = 0; j < count; j ++){
+                for (Item i:
+                        listOfItems) {
+                    if(i.itemID == item.itemID){
+                        i.quantity++;
+                        truth = true;
+                    }
+                }
+                if(!truth){
+                    listOfItems.add(item);
+                }
+                totalPrice+=item.itemPrice;
+            }
+        }
+        return ret;
+    }
     public boolean addItem( int barcode, ExternalInventorySystem ext){
+        //DEPRECATED BY SCANNER
         //could also be called scanItem
         //takes identifier in form of barCode
         Item gotItem;
@@ -50,12 +91,12 @@ public class Sale {
             System.out.println("ELSE");
             return false;
         }
-    }
+    }*/
     public boolean addItems(int itemID, int quantity, ExternalInventorySystem ext){
         boolean truth = false;
         if (ext.inStock(itemID, quantity)) {
             for(int i = 0; i < quantity; i++){
-                truth = this.addItem(itemID, ext);
+                truth = this.addItems(itemID, 1, ext);
             }
         }
 
@@ -63,13 +104,12 @@ public class Sale {
         return truth;
     }
 
-    public void terminateSale(){
+    public void terminateSale(){ // makes currentSale invalid.
         inProgress = false;
 
-        // ta bort salen från listan av sales
 
     }
-    public SaleDTO endSale(String cashier, String POS){
+    public SaleDTO endSale(String cashier, String POS){ //stores and makes dto from sale
         double totalVAT = 0;
         for (Item i :
                 listOfItems) {
@@ -85,7 +125,7 @@ public class Sale {
         return inProgress;
     }
 
-    public String toString(){
+    public String toString(){ // converts a sale to string
         StringBuilder str = new StringBuilder() ;
 
         for (Item i : listOfItems) {

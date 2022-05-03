@@ -7,7 +7,7 @@ public class StoreDTO{
     private String telephoneNMR;
      
 
-    public StoreDTO(String name, String address, String nmr){
+    public StoreDTO(String name, String address, String nmr){ //constructor sstoreDTO
         storeName = name;
         storeAddress = address;
         telephoneNMR = nmr;

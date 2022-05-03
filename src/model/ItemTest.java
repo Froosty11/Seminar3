@@ -9,7 +9,7 @@ class ItemTest {
     private Item item;
     private String str;
     @BeforeEach
-    void setUp(){
+    void setUp(){ //setups ItemTests
         item = new Item(1, 24.5, 0.25, "\"tomat\"", 0);
         str = "1 \"tomat\" -  24.5kr";
     }

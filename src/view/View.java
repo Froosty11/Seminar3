@@ -9,6 +9,9 @@ public class View {
 
     }
     public void hardCodedControllerCalls(){
+        /*
+
+         */
         System.out.println("Making new purchase, customerID 69");
         cont.startNewSale(69);
         System.out.println("Adding two tomatoes!");
@@ -26,6 +29,6 @@ public class View {
         cont.addItem(5);
         System.out.println("Ending purchase.");
         System.out.println("RECEIPT \n\n");
-        if(!cont.endSale(266, "Edvin","Kassa 1")) System.out.println("Not enough funds!");
+        if(!cont.endSale(50000, "Edvin","Kassa 1")) System.out.println("Not enough funds!");
     }
 }

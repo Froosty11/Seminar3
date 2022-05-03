@@ -13,6 +13,8 @@ public class SaleDTO{
     private List<Item> listOfItems = new ArrayList<Item>(); 
     private String pointOfSale;
     public SaleDTO(double price, double vat, List<Item>list, String pos, int i){
+
+        //constructor for making a sale DTO
         this.totalPrice = price;
         this.pointOfSale = pos;
         this.listOfItems = list;
@@ -20,40 +22,40 @@ public class SaleDTO{
         this.totalVAT = vat;
     }
     public SaleDTO copy(){
+        //copy of object with new adress, so we can edit it without editing the old copy
         SaleDTO temp = new SaleDTO(this.totalPrice,this.totalVAT, this.listOfItems, this.pointOfSale, this.saleID);
         temp.setCashier(this.cashier);
         return temp;
     }
 
     public boolean equal(SaleDTO obj) {
-        if(obj.getSaleID() == this.saleID){
-            if(obj.cashier.equals(this.cashier)){
-                if(obj.listOfItems.equals(this.listOfItems)) return true;
-            }
-        }
+        //compares two saleDTOs with eachother, to make sure they're the same. it doesn't compare all
+        //aspects because that would take time.
+        if(obj.getSaleID() == this.saleID && obj.cashier.equals(this.cashier)
+        && obj.listOfItems.equals(this.listOfItems)) return true;
         return false;
     }
 
     // getters and setters
-    public void setCashier(String cashier){
+    public void setCashier(String cashier){ //sets Cashier
         this.cashier = cashier;
     }
-    public String getCashier(){
+    public String getCashier(){ // gets Cashier as String
         return cashier;
     }
     public double getTotal(){
         return totalPrice;
-    }
-    public double getTotalVAT(){
+    } // gets Total price, not including vat
+    public double getTotalVAT(){ // gets VAT
         return totalVAT;
     }
     public List<Item> getItems(){
         return listOfItems;
-    }
+    } // gets a list of Items.
     public String getPOS(){
         return pointOfSale;
-    }
-    public int getSaleID(){ return saleID ; }
+    } // gets POS
+    public int getSaleID(){ return saleID ; } // gets id
 
 
 }

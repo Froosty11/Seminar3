@@ -8,7 +8,8 @@ public class InformationForDisplayDTO{
     private int vat; 
     private int itemDescription; 
     
-   public void giveInformationToDisplay(Sale sale){
-       
+   public void giveInformationToDisplay(){
+       //theoretically sends information to display.
+       //since we have 0 graphics, this does shit all.
    } 
 }

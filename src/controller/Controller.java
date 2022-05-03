@@ -7,6 +7,7 @@ import integration.ExternalInventorySystem;
 import integration.ReceiptPrinter;
 import model.Receipt;
 import model.Sale;
+import model.Scanner;
 
 public class Controller {
     private Sale currentActive;
@@ -15,11 +16,14 @@ public class Controller {
     private ReceiptPrinter rp;
     private StoreDTO store;
 
+    private Scanner scnr;
+
     public Controller(){
         store = new StoreDTO("ICA NÄRA", "Björkvägen 22", "0733533596");
         ext = new ExternalInventorySystem();
         act = new AccountingSystem();
         rp = new ReceiptPrinter();
+        scnr = new Scanner(ext);
 
     }
     public boolean startNewSale(int customerID){
@@ -27,8 +31,9 @@ public class Controller {
         return true;
     }
     public boolean addItem(int itemID){
-        return currentActive.addItem(itemID, ext);
+        return scnr.addItemFromBarcode(itemID, currentActive, 1);
     }
+
     public boolean endSale(double paid, String s, String pos){
         SaleDTO dto = currentActive.endSale(s, pos);
         if(paid > dto.getTotal() + dto.getTotalVAT()) {
@@ -45,7 +50,9 @@ public class Controller {
         currentActive.terminateSale();
     }
     public boolean addItem(int itemID, int count){
-        return currentActive.addItems(itemID,count, ext);
+        scnr.addItemFromBarcode(itemID, currentActive, count);
+
+        return true;
     }
     public String getString(){
         if(currentActive.getProgress()){

@@ -26,10 +26,10 @@ public class Item {
         return quantity;
     }
 
-    public String toString(){
+    public String toString(){ // converts Item to a readable string
         String str = "";
         str += this.quantity;
-        str += " " + this.itemDesc;
+        str += "x " + this.itemDesc;
         str += " -  " + this.itemPrice + "kr";
         return str;
     }

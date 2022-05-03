@@ -22,6 +22,7 @@ public class Receipt {
     */
 
     public Receipt(SaleDTO dto, StoreDTO store){
+        //Generates a receipt with minimal information stored in DTOs
         this.cashier = dto.getCashier();
         this.totalPrice = dto.getTotal();
         this.listOfItems = dto.getItems();
@@ -53,7 +54,7 @@ public class Receipt {
         return this.saleID;
     }
 
-    public String toString(){
+    public String toString(){ // converts a receipt to a string
         StringBuilder str = new StringBuilder();
         str.append(storeInfo);
         str.append("\nCashier: " + this.cashier + "\n");

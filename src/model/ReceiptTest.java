@@ -15,7 +15,7 @@ class ReceiptTest {
     private String str;
     private Receipt rec;
     @BeforeEach
-    void setUp() {
+    void setUp() { // sets up a string equal to a DTO
         str = "Ica Nära \nBjörkvägen 2\n"+ " 037417\n\n" +
                 "Cashier: Edvin\n" + java.time.LocalTime.now().toString().substring(0, 8) +
                  " " + java.time.LocalDate.now().toString() + "\n" +
@@ -41,7 +41,7 @@ class ReceiptTest {
         rec = null;
     }
     @Test
-    void receiptToStringTest(){
+    void receiptToStringTest(){ //compares string to dto output
         boolean expectedResult = true;
         String st2 = rec.toString();
         boolean result = str.equals(st2);

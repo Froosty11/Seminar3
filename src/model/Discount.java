@@ -10,6 +10,7 @@ public class Discount {
         return true;
     }
     private double discountItem(){
+        //same thing here. would in theory be used internally when calling discountFullSale
         return 69;
     }
     private Sale discountFullSale(Sale s){
