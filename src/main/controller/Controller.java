@@ -68,7 +68,7 @@ public class Controller {
  * */
     public boolean endSale(double paid, String cashier, String pos) {
         SaleDTO dto = currentActive.endSale(cashier, pos);
-        if (paid > dto.getTotal() + dto.getTotalVAT() && this.currentActive.getProgress()) {
+        if (paid > dto.getTotal() + dto.getTotalVAT()) {
             Receipt r = new Receipt(dto, store);
             System.out.print(paid - dto.getTotal() - dto.getTotalVAT() + " change\n ");
             rp.PrintReceipt(r);
