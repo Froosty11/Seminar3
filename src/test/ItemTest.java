@@ -1,6 +1,6 @@
 package test;
 
-import model.Item;
+import main.model.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

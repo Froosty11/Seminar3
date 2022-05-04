@@ -1,7 +1,7 @@
-package model;
+package main.model;
 
-import dtos.SaleDTO;
-import dtos.StoreDTO;
+import main.dtos.SaleDTO;
+import main.dtos.StoreDTO;
 
 import java.util.List;
 
@@ -16,20 +16,17 @@ public class Receipt {
     private final String cashier;         // we need this one, a getCashier
     private final int saleID;             // this one we can generate- it's the index in externalAccountingSystem.
 
-    /*
-
-    private double totalPrice; 
-    private String cashier; 
-    private List<Item> listOfItems = new ArrayList<Item>(); 
-    */
-
+    /**
+     * Generates a receipt using the SaleDTO. Time and Date are grabbed through System.
+     * VAT is calculated itemwise.
+     * @param dto SaleDTO to make the Receipt from. Obviously needs to be a completed purchase
+     * @param store Contains store information.
+     */
     public Receipt(SaleDTO dto, StoreDTO store) {
-        //Generates a receipt with minimal information stored in DTOs
         this.cashier = dto.getCashier();
         this.totalPrice = dto.getTotal();
         this.listOfItems = dto.getItems();
         this.storeInfo = store.getStoreName() + " \n" + store.getStoreAddress() + "\n " + store.getNMR() + "\n";
-        //generating the rest of the values
         double vat = 0;
 
         //generating total amount of moms/vat
@@ -37,26 +34,28 @@ public class Receipt {
             vat += item.VAT * item.itemPrice * item.quantity;
         }
         this.totalVAT = vat;
-
-        //time n shit
         this.date = java.time.LocalDate.now().toString();
         this.time = java.time.LocalTime.now().toString().substring(0, 8);
-
-
-        //pos, had to add getPOS and pos variable to dtos
         this.pointOfSale = dto.getPOS();
-
-        //implement this later- we need externalAccountSystem
-
         this.saleID = dto.getSaleID();
 
 
     }
 
+    /**
+     *
+     * @return returns id of a receipt
+     */
     public int getSaleID() {
         return this.saleID;
     }
 
+    /**
+     * Override object.toString().
+     * Makes a full receipt into string using multiple toString() methods
+     * @return long string, intended to be printed.
+     */
+    @Override
     public String toString() { // converts a receipt to a string
         StringBuilder str = new StringBuilder();
         str.append(storeInfo);
@@ -70,7 +69,7 @@ public class Receipt {
         str.append("VAT total: " + this.totalVAT + "\n");
         str.append("TOTAL: " + (this.totalPrice + this.totalVAT) + " \n");
 
-        str.append(saleID);
+        str.append("SaleID:"+saleID);
 
 
         return str.toString();

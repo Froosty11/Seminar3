@@ -1,6 +1,6 @@
-package integration;
+package main.integration;
 
-import model.Item;
+import main.model.Item;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,10 +11,14 @@ import java.util.Scanner;
 public class ExternalInventorySystem {
     private List<Item> currentInventory = new ArrayList<>();
 
+    /**
+     * Constructor for making a new EXT-system. Loads inventory from ids.txt.
+     * Edit txt if you want to add/remove/change items.
+     */
     public ExternalInventorySystem() {// makes a new EIS using a txt file that contains the "standard inventory"
         //which is default inventory and contains grocery items for taco tuesday
         try {
-            Scanner scnr = new Scanner(new File("src/integration/ids.txt"));
+            Scanner scnr = new Scanner(new File("src/main/integration/ids.txt"));
             String[] temp;
             Item item;
             int line = 0;
@@ -30,12 +34,21 @@ public class ExternalInventorySystem {
         }
     }
 
+    /**
+     * Gets an item from the inventory.
+     * @param id the id of the item ur looking from. Would be the index in the currentInventory list.
+     * @return currentInventory[id] item
+     */
     public Item getItem(int id) {
         return currentInventory.get(id);
     }
 
+    /**
+     * converts the full inventory to a string. Useful if you're printing the full inventory upon updates.
+     * @return Long string of all items, their quantity, price etc.
+     */
+    @Override
     public String toString() {
-        //converts it to String
         String str = "";
         for (Item item : currentInventory) {
             str += "\n" + item.toString();
@@ -43,8 +56,13 @@ public class ExternalInventorySystem {
         return str;
     }
 
+    /**
+     * Checks if itemID is in stock.
+     * @param id item to look for
+     * @return true if theres >=1 copy of item in stock
+     */
+
     public boolean inStock(int id) {
-        //checks if a single item is in stock using barcode/ID
         if (currentInventory.size() >= id) {
 
             Item it = currentInventory.get(id);
@@ -55,6 +73,20 @@ public class ExternalInventorySystem {
         return false;
     }
 
+    /**
+     * Gets length of inventory. Basically amount of indexes used.
+     * @return integer with length
+     */
+    public int getLength(){
+        return currentInventory.size();
+    }
+
+    /**
+     * Looks if an item has more than quantity in stock
+     * @param id item to look for
+     * @param quantity amount of item to look for
+     * @return true if enough items exist
+     */
     public boolean inStock(int id, int quantity) {
         //checks if multiple items of the same ID are in stock, for example 4 bananas
         if (currentInventory.size() >= id) {
@@ -66,8 +98,14 @@ public class ExternalInventorySystem {
         return false;
     }
 
+    /**
+     * adds an Item to the inventory, useful for returns or new products etc.
+     * Item has to be new. Doesn't check if the id already exists. Please double check.
+     * ItemID has to be the length of the current inventory. Otherwise you'll have a mismatch between itemIDs and index
+     * @param item item to add. Make sure it doesn't exist already in list.
+     *
+     */
     public void addItem(Item item) {
-        //adds an item to the externalInventorySystem, incase a new product or a return
 
         currentInventory.add(item);
 

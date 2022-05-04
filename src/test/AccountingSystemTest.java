@@ -1,9 +1,9 @@
 package test;
 
-import dtos.SaleDTO;
-import integration.AccountingSystem;
-import integration.ExternalInventorySystem;
-import model.Sale;
+import main.dtos.SaleDTO;
+import main.integration.AccountingSystem;
+import main.integration.ExternalInventorySystem;
+import main.model.Sale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,15 +14,21 @@ class AccountingSystemTest {
     private AccountingSystem ac;
     private SaleDTO dto;
 
+    /**
+     * Setups for potential AC-testing
+     */
     @BeforeEach
     void setUp() { //Happens before each test
-        //clears a new ac system, then adds a single item to it
+
         ac = new AccountingSystem();
         Sale temp = new Sale();
         temp.addItems(3, 2, new ExternalInventorySystem());
         dto = temp.endSale("uwu", "kassa 2");
     }
 
+    /**
+     * Tests registerSale
+     */
     @Test
     void registerSale() { //makes sure listOfSales contains the correct items after registering sales
         boolean result = false;
@@ -33,6 +39,9 @@ class AccountingSystemTest {
         assertTrue(result, "Registering sale failed. ");
     }
 
+    /**
+     * Tests getSaleDTO
+     */
     @Test
     void getSaleDTO() { // makes sure the dto contains all important information after getting
         boolean expected = true;
@@ -42,7 +51,9 @@ class AccountingSystemTest {
         assertEquals(expected, result, "getSaleDTO failed");
     }
 
-
+    /**
+     * Ignore. Not used in current iteration.
+     */
     @Test
     void findAndGetSaleDTO() {
         //since we're not using it currently- im not testing it either

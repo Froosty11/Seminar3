@@ -1,4 +1,4 @@
-package dtos;
+package main.dtos;
 
 public class StoreDTO {
 

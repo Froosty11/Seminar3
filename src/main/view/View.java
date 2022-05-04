@@ -1,19 +1,27 @@
-package view;
+package main.view;
 
-import controller.Controller;
+import main.controller.Controller;
 
 public class View {
     Controller cont;
 
+    /**
+     * Constructor for a view. Makes a controller obj.
+     * @param contr
+     */
     public View(Controller contr) {
         cont = contr;
 
     }
 
+    /**
+     * Hardcoded calls to Controller.
+     * Buys a bunch of taco related items.
+     * Only kind of bad choice was not putting the change in the receipt print.
+     * It's printed at the top currently, which is ugly.
+     */
     public void hardCodedControllerCalls() {
-        /*
 
-         */
         System.out.println("Making new purchase, customerID 69");
         cont.startNewSale(69);
         System.out.println("Adding two tomatoes!");

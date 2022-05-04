@@ -1,6 +1,6 @@
-package dtos;
+package main.dtos;
 
-import model.Item;
+import main.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;

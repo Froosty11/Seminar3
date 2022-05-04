@@ -1,11 +1,11 @@
 package test;
 
-import dtos.SaleDTO;
-import dtos.StoreDTO;
-import integration.ExternalInventorySystem;
-import model.Item;
-import model.Receipt;
-import model.Sale;
+import main.dtos.SaleDTO;
+import main.dtos.StoreDTO;
+import main.integration.ExternalInventorySystem;
+import main.model.Item;
+import main.model.Receipt;
+import main.model.Sale;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,11 +16,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReceiptTest {
+    private ExternalInventorySystem ext;
     private String str;
     private Receipt rec;
 
     @BeforeEach
     void setUp() { // sets up a string equal to a DTO
+        ext = new ExternalInventorySystem();
+        Item chips = new Item(6, 15.0, 0.25, "chips", 3);
+        ext.addItem(chips);
+        Sale sale = new Sale();
+        sale.addItem(chips, ext);
+        SaleDTO temp = sale.endSale("Edvin", "Butik");
         str = "Ica Nära \nBjörkvägen 2\n" + " 037417\n\n" +
                 "Cashier: Edvin\n" + java.time.LocalTime.now().toString().substring(0, 8) +
                 " " + java.time.LocalDate.now().toString() + "\n" +
@@ -29,14 +36,8 @@ class ReceiptTest {
                 "Subtotal:90.0 \n" +
                 "VAT total: 22.5\n" +
                 "TOTAL: 112.5 \n" +
-                "1337";
-        Item chips = new Item(6, 15.0, 0.25, "\"chips\"", 3);
-        List<Item> itemList = new ArrayList<>();
-        itemList.add(chips);
-        Sale sale = new Sale();
-        sale.addItems(3, 6, new ExternalInventorySystem());
-        SaleDTO s = sale.endSale("Edvin", "Butik");
-        rec = new Receipt(s, new StoreDTO("Ica Nära", "Björkvägen 2", "037417"));
+                "SaleID:" + temp.getSaleID();
+        rec = new Receipt(temp, new StoreDTO("Ica Nära", "Björkvägen 2", "037417"));
 
     }
 

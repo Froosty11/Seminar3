@@ -1,11 +1,12 @@
 package test;
 
-import integration.ExternalInventorySystem;
-import model.Item;
+import main.integration.ExternalInventorySystem;
+import main.model.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExternalInventorySystemTest {
@@ -35,8 +36,12 @@ class ExternalInventorySystemTest {
 
     @Test
     void inStock() {
-        //TODO: MAKE THIS GO THROUGH EACH ITEM INSTEAD- THIS IS NOT JUNIT TESTING
-        assertTrue(ext.inStock(4), "banana not in stock");
+        boolean inList = false;
+        for(int i = 0; i < ext.getLength() ; i++){ // checks all items.
+            if(ext.getItem(i).toString().equals(item.toString())) inList = true;
+        }
+
+        assertTrue(inList, "banana not in stock");
     }
 
     @Test
