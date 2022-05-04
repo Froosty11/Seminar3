@@ -6,22 +6,24 @@ import integration.ExternalInventorySystem;
 import model.Item;
 import model.Receipt;
 import model.Sale;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReceiptTest {
     private String str;
     private Receipt rec;
+
     @BeforeEach
     void setUp() { // sets up a string equal to a DTO
-        str = "Ica Nära \nBjörkvägen 2\n"+ " 037417\n\n" +
+        str = "Ica Nära \nBjörkvägen 2\n" + " 037417\n\n" +
                 "Cashier: Edvin\n" + java.time.LocalTime.now().toString().substring(0, 8) +
-                 " " + java.time.LocalDate.now().toString() + "\n" +
+                " " + java.time.LocalDate.now().toString() + "\n" +
                 "Butik\n" +
                 "6 chips 15.0 \n" +
                 "Subtotal:90.0 \n" +
@@ -43,8 +45,9 @@ class ReceiptTest {
         str = null;
         rec = null;
     }
+
     @Test
-    void receiptToStringTest(){ //compares string to dto output
+    void receiptToStringTest() { //compares string to dto output
         boolean expectedResult = true;
         String st2 = rec.toString();
         boolean result = str.equals(st2);

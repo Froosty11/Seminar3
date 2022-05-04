@@ -18,7 +18,8 @@ public class Controller {
 
     private Scanner scnr;
 
-    public Controller(){
+    public Controller() {
+        // constructor for controller. Hardcoded StoreDTO as we're not transferring it.
         store = new StoreDTO("ICA NÄRA", "Björkvägen 22", "0733533596");
         ext = new ExternalInventorySystem();
         act = new AccountingSystem();
@@ -26,19 +27,21 @@ public class Controller {
         scnr = new Scanner(ext);
 
     }
-    public boolean startNewSale(int customerID){
+
+    public boolean startNewSale(int customerID) { // starts a new sale with customerID. Since discount isn't handled ID isn't needed for anything
         currentActive = new Sale();
         return true;
     }
-    public boolean addItem(int itemID){
+
+    public boolean addItem(int itemID) { // adds one item using the itemID.
         return scnr.addItemFromBarcode(itemID, currentActive, 1);
     }
 
-    public boolean endSale(double paid, String s, String pos){
+    public boolean endSale(double paid, String s, String pos) {
         SaleDTO dto = currentActive.endSale(s, pos);
-        if(paid > dto.getTotal() + dto.getTotalVAT()) {
+        if (paid > dto.getTotal() + dto.getTotalVAT()) {
             Receipt r = new Receipt(dto, store);
-            System.out.print(paid-dto.getTotal()- dto.getTotalVAT() + " change\n ");
+            System.out.print(paid - dto.getTotal() - dto.getTotalVAT() + " change\n ");
             rp.PrintReceipt(r);
             act.registerSale(dto);
             return true;
@@ -46,16 +49,19 @@ public class Controller {
         return false;
 
     }
-    public void terminate(){
+
+    public void terminate() {
         currentActive.terminateSale();
     }
-    public boolean addItem(int itemID, int count){
+
+    public boolean addItem(int itemID, int count) {
         scnr.addItemFromBarcode(itemID, currentActive, count);
 
         return true;
     }
-    public String getString(){
-        if(currentActive.getProgress()){
+
+    public String getString() {
+        if (currentActive.getProgress()) {
             String str;
             str = currentActive.toString();
             return str;

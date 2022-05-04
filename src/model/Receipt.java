@@ -1,8 +1,10 @@
 package model;
 
-import java.util.*;
 import dtos.SaleDTO;
 import dtos.StoreDTO;
+
+import java.util.List;
+
 public class Receipt {
     private final double totalPrice;      // totalprice we have
     private final double totalVAT;        // vat we generate from the list of Items. we assume they dont change
@@ -21,58 +23,59 @@ public class Receipt {
     private List<Item> listOfItems = new ArrayList<Item>(); 
     */
 
-    public Receipt(SaleDTO dto, StoreDTO store){
+    public Receipt(SaleDTO dto, StoreDTO store) {
         //Generates a receipt with minimal information stored in DTOs
         this.cashier = dto.getCashier();
         this.totalPrice = dto.getTotal();
         this.listOfItems = dto.getItems();
         this.storeInfo = store.getStoreName() + " \n" + store.getStoreAddress() + "\n " + store.getNMR() + "\n";
         //generating the rest of the values
-        double vat = 0; 
+        double vat = 0;
 
         //generating total amount of moms/vat
         for (Item item : listOfItems) {
-            vat += item.VAT*item.itemPrice*item.quantity;
+            vat += item.VAT * item.itemPrice * item.quantity;
         }
         this.totalVAT = vat;
 
         //time n shit
         this.date = java.time.LocalDate.now().toString();
-        this.time = java.time.LocalTime.now().toString().substring(0,8);
+        this.time = java.time.LocalTime.now().toString().substring(0, 8);
 
 
         //pos, had to add getPOS and pos variable to dtos
         this.pointOfSale = dto.getPOS();
-        
+
         //implement this later- we need externalAccountSystem
 
         this.saleID = dto.getSaleID();
 
 
     }
-    public int getSaleID(){
+
+    public int getSaleID() {
         return this.saleID;
     }
 
-    public String toString(){ // converts a receipt to a string
+    public String toString() { // converts a receipt to a string
         StringBuilder str = new StringBuilder();
         str.append(storeInfo);
         str.append("\nCashier: " + this.cashier + "\n");
-        str.append(time + " " + date+ "\n");
+        str.append(time + " " + date + "\n");
         str.append(pointOfSale + "\n");
         for (Item item : listOfItems) {
             str.append(item.quantity + " " + item.itemDesc + " " + item.itemPrice + " \n");
         }
         str.append("Subtotal:" + this.totalPrice + " \n");
         str.append("VAT total: " + this.totalVAT + "\n");
-        str.append("TOTAL: " + (this.totalPrice+this.totalVAT) + " \n");
+        str.append("TOTAL: " + (this.totalPrice + this.totalVAT) + " \n");
 
         str.append(saleID);
-        
+
 
         return str.toString();
     }
 
-    
+
 }
 

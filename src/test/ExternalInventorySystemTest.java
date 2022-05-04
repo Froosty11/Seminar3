@@ -1,17 +1,17 @@
 package test;
 
 import integration.ExternalInventorySystem;
+import model.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import model.Item;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExternalInventorySystemTest {
 
-        private Item item;
-        private ExternalInventorySystem ext;
+    private Item item;
+    private ExternalInventorySystem ext;
 
 
     @BeforeEach
@@ -24,13 +24,11 @@ class ExternalInventorySystemTest {
         ext.addItem(item);
 
 
-
     }
 
     @AfterEach
     void tearDown() {
         //should null here, but GC can handle it lol
-
 
 
     }
@@ -47,8 +45,9 @@ class ExternalInventorySystemTest {
         assertTrue(ext.inStock(4, 3), "could not find that many bananas in stock");
 
     }
+
     @Test
-    void testAddItem(){
+    void testAddItem() {
         //this is fine- since we've tested it previously
         assertTrue(ext.inStock(5), "Nocco pear is in stock");
     }

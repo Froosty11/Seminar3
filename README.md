@@ -1,6 +1,6 @@
 # Seminar3-iv1350
 
-Package Diagram 
+Package Diagram
 
 <img width="1200" alt="Screenshot 2022-05-03 at 11 08 28" src="https://user-images.githubusercontent.com/100201381/166429052-69e6e4c1-3965-44d4-8efc-5aa6258b4a63.png">
 
@@ -31,7 +31,7 @@ Package Diagram
 <img width="1026" alt="Screenshot 2022-05-03 at 11 04 18" src="https://user-images.githubusercontent.com/100201381/166428495-421869e8-7dc8-4a7d-8164-7769d5f6249a.png">
 
 
-Sample Run Of The Code: 
+Sample Run Of The Code:
 
 ![unknown](https://user-images.githubusercontent.com/100201381/166434528-27f0a422-b91b-473c-ad6a-1cccffa0d818.png)
 

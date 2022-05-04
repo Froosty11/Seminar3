@@ -5,10 +5,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ControllerTest {
     Controller contr;
+
     @BeforeEach
     void setUp() {
         contr = new Controller();
@@ -34,7 +35,7 @@ class ControllerTest {
         Controller ctr2 = new Controller();
         ctr2.startNewSale(1);
         ctr2.addItem(0);
-        if(ctr2.getString().equals(contr.getString())){
+        if (ctr2.getString().equals(contr.getString())) {
             result = true;
         }
         assertTrue(result, "Controller.addItem is failing test.");
@@ -45,7 +46,7 @@ class ControllerTest {
     void endSale() {
         boolean result = false;
         contr.endSale(20, "Edvin", "fortnite");
-        if(contr.getString() == null){
+        if (contr.getString() == null) {
             result = true;
         }
         assertTrue(result, "Controller.endSale failed junit test");
@@ -55,7 +56,7 @@ class ControllerTest {
     void terminate() {
         boolean result = false;
         contr.terminate();
-        if(contr.getString() == null){
+        if (contr.getString() == null) {
             result = true;
         }
         assertTrue(result, "Controller.terminate failed junit test");
@@ -68,7 +69,7 @@ class ControllerTest {
         Controller ctr2 = new Controller();
         ctr2.startNewSale(1);
         ctr2.addItem(0, 2);
-        if(ctr2.getString().equals(contr.getString())){
+        if (ctr2.getString().equals(contr.getString())) {
             result = true;
         }
         assertTrue(result, "Controller.addItems is failing test.");

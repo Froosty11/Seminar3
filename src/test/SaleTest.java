@@ -7,27 +7,28 @@ import model.Sale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SaleTest {
     private Sale sale;
     private AccountingSystem ac;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         sale = new Sale();
         ac = new AccountingSystem();
 
     }
+
     @Test
     void addItem() {
         //We're unsure about the proper usage of junit for this- what probably would be more
         //correct would be to make a new sale object, without items in it- then adding items and comparing all
         // item ids in the two sales. - i dont know if thats viable in the long run though.
         // the logic for returning boolean is found in addItem
-        boolean addingItem = sale.addItems(3,1,  new ExternalInventorySystem());
+        boolean addingItem = sale.addItems(3, 1, new ExternalInventorySystem());
         boolean expectedResult = true;
-        assertEquals(expectedResult, addingItem, "Adding item failed" );
+        assertEquals(expectedResult, addingItem, "Adding item failed");
     }
 
     @Test
@@ -43,22 +44,22 @@ class SaleTest {
         sale.terminateSale();
         boolean result = sale.getProgress();
         boolean expected = false;
-        assertEquals(expected,result,"Sale not terminated properly.");
+        assertEquals(expected, result, "Sale not terminated properly.");
     }
 
     @Test
     void endSale() {
         /*
-        * endSale testas genom att skicka genom andra metoder- kanske inte en perfekt lösning
-        * men det är det enda sättet att veta om salet hamnat i accounting eller inte.
-        * */
+         * endSale testas genom att skicka genom andra metoder- kanske inte en perfekt lösning
+         * men det är det enda sättet att veta om salet hamnat i accounting eller inte.
+         * */
 
-        sale.addItems(2,1,new ExternalInventorySystem());
+        sale.addItems(2, 1, new ExternalInventorySystem());
         boolean result = false;
         boolean expectedResult = true;
         SaleDTO t = sale.endSale("Edvin", "Kassa 2");
         ac.registerSale(t);
-        if(ac.getSaleDTO(t.getSaleID()) != null && !sale.getProgress()){
+        if (ac.getSaleDTO(t.getSaleID()) != null && !sale.getProgress()) {
             result = true;
         }
         assertEquals(expectedResult, result, "Ended sale could not be found in Accounting. ");

@@ -7,17 +7,19 @@ import model.Sale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AccountingSystemTest {
     private AccountingSystem ac;
     private SaleDTO dto;
+
     @BeforeEach
     void setUp() { //Happens before each test
         //clears a new ac system, then adds a single item to it
         ac = new AccountingSystem();
         Sale temp = new Sale();
-        temp.addItems(3,2 ,new ExternalInventorySystem());
+        temp.addItems(3, 2, new ExternalInventorySystem());
         dto = temp.endSale("uwu", "kassa 2");
     }
 
@@ -25,7 +27,7 @@ class AccountingSystemTest {
     void registerSale() { //makes sure listOfSales contains the correct items after registering sales
         boolean result = false;
         ac.registerSale(dto);
-        if(ac.getSaleDTO(dto.getSaleID()) != null){
+        if (ac.getSaleDTO(dto.getSaleID()) != null) {
             result = true;
         }
         assertTrue(result, "Registering sale failed. ");
@@ -37,7 +39,7 @@ class AccountingSystemTest {
         ac.registerSale(dto);
         boolean result = dto.equal(ac.getSaleDTO(dto.getSaleID()));
         //for some reason @override doesnt work here idk
-        assertEquals(expected,result,"getSaleDTO failed");
+        assertEquals(expected, result, "getSaleDTO failed");
     }
 
 
