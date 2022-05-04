@@ -1,8 +1,11 @@
-package model;
+package test;
 
 import dtos.SaleDTO;
 import dtos.StoreDTO;
 import integration.ExternalInventorySystem;
+import model.Item;
+import model.Receipt;
+import model.Sale;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
