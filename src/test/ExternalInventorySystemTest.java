@@ -1,6 +1,8 @@
 package test;
 
+import main.integration.DatabaseNotFoundException;
 import main.integration.ExternalInventorySystem;
+import main.integration.ItemNotFoundException;
 import main.model.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +40,15 @@ class ExternalInventorySystemTest {
     void inStock() {
         boolean inList = false;
         for(int i = 0; i < ext.getLength() ; i++){ // checks all items.
-            if(ext.getItem(i).toString().equals(item.toString())) inList = true;
+            try{
+                if(ext.getItem(i).toString().equals(item.toString())) inList = true;
+            }
+            catch (DatabaseNotFoundException e){
+                e.printStackTrace();
+            }
+            catch (ItemNotFoundException itemNotFoundException){
+                itemNotFoundException.getMessage();
+            }
         }
 
         assertTrue(inList, "banana not in stock");

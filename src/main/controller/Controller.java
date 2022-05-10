@@ -2,20 +2,33 @@ package main.controller;
 
 import main.dtos.SaleDTO;
 import main.dtos.StoreDTO;
+import main.integration.ItemNotFoundException;
 import main.integration.AccountingSystem;
 import main.integration.ExternalInventorySystem;
 import main.integration.ReceiptPrinter;
+import main.model.Observer;
 import main.model.Receipt;
 import main.model.Sale;
 import main.model.ItemScanner;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * This is the class controller.
+ * It controls a sale when called to.
+ * It also contains and handles all databases, and integration with external systems
+ *
+ */
 public class Controller {
     private Sale currentActive;
     private ExternalInventorySystem ext;
     private AccountingSystem act;
     private ReceiptPrinter rp;
     private StoreDTO store;
-
+    private List<Observer> observerList = new ArrayList<Observer>();
     private ItemScanner scnr;
 
     /**
@@ -57,7 +70,15 @@ public class Controller {
     * Adds one item to the currentSale.
     * @param itemID the itemID of the item that should be added*/
     public boolean addItem(int itemID) {
-        return scnr.addItemFromBarcode(itemID, currentActive, 1);
+        try{
+            return scnr.addItemFromBarcode(itemID, currentActive, 1);
+        }
+        catch (
+                IOException fileNot
+        ){
+            fileNot.printStackTrace();
+        }
+        return false;
     }
 /**
  * Ends the current sale. Adds the sale to previously done sales in ACT. Prints a receipt using RP.
@@ -93,13 +114,20 @@ public class Controller {
      * @param count the amount of items added
      * @return only returns true currently* should defintely check through each one.
      */
-    public boolean addItem(int itemID, int count) {
-        scnr.addItemFromBarcode(itemID, currentActive, count);
+    public boolean addItem(int itemID, int count)  {
+        try{
+            scnr.addItemFromBarcode(itemID, currentActive, count);
+        }
+        catch (IOException fileNot){
+            fileNot.printStackTrace();
+        }
 
         return true;
     }
+
 /**
  * Gets string- the current sales sale.string
+ * @return a string that represents the current controller
  * */
     public String getString() {
         if (currentActive.getProgress()) {
@@ -113,4 +141,6 @@ public class Controller {
         return null;
 
     }
+
+
 }

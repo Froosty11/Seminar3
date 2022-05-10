@@ -39,8 +39,13 @@ public class ExternalInventorySystem {
      * @param id the id of the item ur looking from. Would be the index in the currentInventory list.
      * @return currentInventory[id] item
      */
-    public Item getItem(int id) {
-        return currentInventory.get(id);
+    public Item getItem(int id) throws ItemNotFoundException, DatabaseNotFoundException{
+        if(id == 6) throw new DatabaseNotFoundException("Database not found, try reconnecting", new Exception());
+        try {
+            return currentInventory.get(id);
+        }catch (IndexOutOfBoundsException e){
+            throw new ItemNotFoundException(id);
+        }
     }
 
     /**

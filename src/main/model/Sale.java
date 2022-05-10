@@ -2,6 +2,7 @@ package main.model;
 
 import main.dtos.SaleDTO;
 import main.integration.ExternalInventorySystem;
+import main.view.TotalRevenueView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Sale {
     private List<Item> listOfItems = new ArrayList<Item>();
     private double totalPrice;
     private int saleID;
+    private List<Observer> observerList = new ArrayList<Observer>();
 
     /**
      * Constructs a new sale.
@@ -21,6 +23,8 @@ public class Sale {
      */
     public Sale() {
         Random rndm = new Random();
+        observerList.add(new TotalRevenueView());
+        observerList.add(new TotalRevenueFileOutput());
         listOfItems.clear();
         inProgress = true;
         currentTotal = 0;
@@ -54,6 +58,7 @@ public class Sale {
             return true;
         }
         return false;
+
 
     }
 
@@ -100,6 +105,7 @@ public class Sale {
         SaleDTO thisSale = new SaleDTO(totalPrice, totalVAT, listOfItems, POS, saleID);
         this.inProgress = false;
         thisSale.setCashier(cashier);
+        updateObservers(this.totalPrice + totalVAT);
 
         return thisSale;
     }
@@ -119,6 +125,16 @@ public class Sale {
             str.append(i + "\n");
         }
         return str.toString();
+    }
+
+    public void updateObservers(double amount){
+        for (Observer o : observerList) {
+            o.update(amount);
+        }
+    }
+    public void addObserver(Observer observer){
+        addObserver(observer);
+
     }
 
 }

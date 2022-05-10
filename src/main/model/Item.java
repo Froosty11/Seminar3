@@ -14,7 +14,7 @@ public class Item {
      * @param itemID itemID to get
      * @param ext ext, need it to get.
      */
-    public Item(int itemID, ExternalInventorySystem ext){
+    /*public Item(int itemID, ExternalInventorySystem ext){
         Item temp = ext.getItem(itemID);
         this.quantity = temp.quantity;
         this.itemPrice = temp.quantity;
@@ -22,7 +22,7 @@ public class Item {
         this.VAT = temp.VAT;
         this.itemDesc = temp.itemDesc;
 
-    }
+    }*/
     /**
      * Constructor for item. Honestly, should probably get it from the inventorySystem, but we'd still need this
      * for testing and adding new items.

@@ -1,6 +1,13 @@
 package main.model;
 
+import main.integration.ItemNotFoundException;
+import main.integration.DatabaseNotFoundException;
 import main.integration.ExternalInventorySystem;
+
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ItemScanner {
     private ExternalInventorySystem ext;
@@ -22,9 +29,28 @@ public class ItemScanner {
      * @param count amount of items to add
      * @return
      */
-    public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) {
-        Item temp = ext.getItem(barcode);
-        Item ret = new Item(count, temp.itemPrice, temp.VAT, temp.itemDesc, temp.itemID);
+    public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) throws IOException {
+        Item ret;
+        FileWriter logger = new FileWriter("src/main/integration/errorLogs.txt", true);
+        Item temp = new Item(0, 0,0 ,"null", 0);
+        try{
+            temp = ext.getItem(barcode);
+        }
+        catch (ItemNotFoundException e) {
+            System.out.println(e.getMessage());
+            logger.write(e.getAdminMessage());
+
+        }
+        catch (DatabaseNotFoundException dbException){
+            //print message for user
+            System.out.println(dbException.getMessage());
+            //log message for admin
+            logger.write(dbException.getAdminMessage());
+        }
+
+        logger.close();
+
+        ret = new Item(count, temp.itemPrice, temp.VAT, temp.itemDesc, temp.itemID);
 
         return saleToAddTo.addItem(ret, ext);
 
