@@ -2,6 +2,9 @@ package main.view;
 
 import main.model.Observer;
 
+/**
+ * TotalRevenueView sends information to display about the current revenue
+ */
 public class TotalRevenueView implements Observer {
     private double totalPaid;
     public TotalRevenueView(){

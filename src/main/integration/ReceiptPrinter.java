@@ -2,6 +2,10 @@ package main.integration;
 
 import main.model.Receipt;
 
+/**
+ * ReceiptPrinter in theory handles an external printer to print receipts to give to the customer
+ *
+ */
 public class ReceiptPrinter {
     /**
      * Constructs a receiptPrinter.

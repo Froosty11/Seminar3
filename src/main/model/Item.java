@@ -1,7 +1,10 @@
 package main.model;
 
-import main.integration.ExternalInventorySystem;
 
+/**
+ * Item handles an item, which is the most primitive out of our classes.
+ * It includes price, vat, quantity of the specific item, an id, and a description that we're using as a name
+ */
 public class Item {
     double itemPrice;
     double VAT; // a percentage 0.25 etc

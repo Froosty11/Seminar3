@@ -6,6 +6,12 @@ import main.model.Receipt;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AccountingSystem handles all previously ended purchases. It's currently limited to 10k differnt
+ * saleDTOs in a list- w
+ *
+ * TODO: should be changed to hashmap
+ */
 public class AccountingSystem {
     List<SaleDTO> allSales;
 

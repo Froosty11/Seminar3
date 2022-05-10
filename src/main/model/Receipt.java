@@ -5,6 +5,10 @@ import main.dtos.StoreDTO;
 
 import java.util.List;
 
+/**
+ * Receipt is a class to simulate the receipt that you would give a customer to be able to prove their purchase
+ *
+ */
 public class Receipt {
     private final double totalPrice;      // totalprice we have
     private final double totalVAT;        // vat we generate from the list of Items. we assume they dont change

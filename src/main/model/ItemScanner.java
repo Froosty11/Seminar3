@@ -9,6 +9,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * ItemScanner works like handling class for adding items.
+ * Instead of adding an item using the item class we can use the external inventory system
+ */
 public class ItemScanner {
     private ExternalInventorySystem ext;
 
@@ -47,9 +51,7 @@ public class ItemScanner {
             //log message for admin
             logger.write(dbException.getAdminMessage());
         }
-
         logger.close();
-
         ret = new Item(count, temp.itemPrice, temp.VAT, temp.itemDesc, temp.itemID);
 
         return saleToAddTo.addItem(ret, ext);

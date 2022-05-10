@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Sale contains the necessary information and objects to start, end and modify a sale that is currently happening.
+ */
 public class Sale {
     private boolean inProgress;
     private double currentTotal;

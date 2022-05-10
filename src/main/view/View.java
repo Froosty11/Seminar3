@@ -2,6 +2,10 @@ package main.view;
 
 import main.controller.Controller;
 
+/**
+ * Theoretical class containing hardcoded calls to Controller. Should contain code for a display and buttons
+ * on the display, allowing you to put in new items etc.
+ */
 public class View {
     Controller cont;
 

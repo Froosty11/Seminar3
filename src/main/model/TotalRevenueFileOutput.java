@@ -3,6 +3,9 @@ package main.model;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+/**
+ * Observer that observes a sale and prints information after each sale to make sure the proper amount of money is correct
+ */
 public class TotalRevenueFileOutput implements Observer{
     String fileLoc = "";
     double amount;

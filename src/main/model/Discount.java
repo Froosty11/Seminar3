@@ -1,5 +1,8 @@
 package main.model;
 
+/**
+ * A discount handling class. calculates discounts for individual items or sales
+ */
 public class Discount {
     String rules;
 

@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * ExternalInventorySystem handles the current stock and inventory of the items in shop
+ * Checks for instock, adding items, amount of items, etc.
+ */
 public class ExternalInventorySystem {
     private List<Item> currentInventory = new ArrayList<>();
 
