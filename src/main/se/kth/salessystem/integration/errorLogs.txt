@@ -44,3 +44,13 @@ Database not found, try reconnecting
 [Ljava.lang.StackTraceElement;@67424e82
 End of Log 
 
+Item Exception -2022-05-1314:42:03.037238700
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+[Ljava.lang.StackTraceElement;@69d0a921
+ End of Log 
+
+Database Exception -  2022-05-13T14:42:03.052240600
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@42110406
+End of Log 
+

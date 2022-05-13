@@ -33,7 +33,7 @@ public class ItemScanner {
      */
     public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) throws IOException {
         Item ret;
-        FileWriter logger = new FileWriter("src/se.kth.salessystem.main/integration/errorLogs.txt", true);
+        FileWriter logger = new FileWriter("src/main/se/kth/salessystem/integration/errorLogs.txt", true);
         Item temp = new Item(0, 0,0 ,"null", 0);
         try{
             temp = ext.getItem(barcode);

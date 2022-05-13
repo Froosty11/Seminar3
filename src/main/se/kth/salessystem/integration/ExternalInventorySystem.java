@@ -22,7 +22,7 @@ public class ExternalInventorySystem {
     public ExternalInventorySystem() {// makes a new EIS using a txt file that contains the "standard inventory"
         //which is default inventory and contains grocery items for taco tuesday
         try {
-            Scanner scnr = new Scanner(new File("src/se.kth.salessystem.main/integration/ids.txt"));
+            Scanner scnr = new Scanner(new File("src/main/se/kth/salessystem/integration/ids.txt"));
             String[] temp;
             Item item;
             int line = 0;

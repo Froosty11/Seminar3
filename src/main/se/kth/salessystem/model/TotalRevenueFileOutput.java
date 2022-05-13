@@ -11,7 +11,7 @@ public class TotalRevenueFileOutput implements Observer{
     double amount;
     public TotalRevenueFileOutput(){
         amount = 0;
-        fileLoc = "src/se.kth.salessystem.main/model/totalRevenue.txt";
+        fileLoc = "src/main/se/kth/salessystem/model/totalRevenue.txt";
 
     }
 

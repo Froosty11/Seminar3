@@ -20,7 +20,7 @@ public class AccountingSystem {
      */
     public AccountingSystem() {
         allSales = new ArrayList<>();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 10000; i++) { //yas insists on not fixing this
             allSales.add(null);
         }
     }
