@@ -138,7 +138,39 @@ public class Sale {
     }
     public void addObserver(Observer observer){
         addObserver(observer);
-
+    }
+    public SaleMemento getMemento(){
+        return new SaleMemento(this.listOfItems, this.totalPrice);
+    }
+    public void restoreFromMemento(SaleMemento memento){
+        this.listOfItems = memento.getOldSaleItems();
+        this.totalPrice = memento.getPrice();
+    }
+    /**
+     * Our implementation of the Memento pattern
+     * <a href="https://en.wikipedia.org/wiki/Memento_pattern#Java_example">https://en.wikipedia.org/wiki/Memento_pattern#Java_example</a>
+     *
+     * We decided to store our state as the full list.
+     */
+    public static class SaleMemento {
+        private final List<Item> oldSaleItems;
+        private final double price;
+        public SaleMemento(List<Item> items, double price){
+            oldSaleItems = new ArrayList<>();
+            for (Item i :
+                    items) {
+                oldSaleItems.add(i.clone());
+            }
+            this.price = price;
+        }
+        private List<Item> getOldSaleItems(){
+            return oldSaleItems;
+        }
+        private double getPrice(){
+            return price;
+        }
     }
 
 }
+
+

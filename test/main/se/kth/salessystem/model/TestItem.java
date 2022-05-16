@@ -1,4 +1,4 @@
-package se.kth.salessystem.model;
+package main.se.kth.salessystem.model;
 
 import main.se.kth.salessystem.model.Item;
 import org.junit.jupiter.api.AfterEach;

@@ -6,6 +6,8 @@ import main.se.kth.salessystem.integration.ItemNotFoundException;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ItemScanner works like handling class for adding items.
@@ -13,6 +15,7 @@ import java.io.IOException;
  */
 public class ItemScanner {
     private ExternalInventorySystem ext;
+    private List<Sale.SaleMemento> undoList;
 
     /**
      * Constructor for a Scanner. Bad choice of Identifier- but idk what to call it.
@@ -21,6 +24,7 @@ public class ItemScanner {
      */
     public ItemScanner(ExternalInventorySystem ext) {
         this.ext = ext;
+        this.undoList = new ArrayList<>();
     }
 
     /**
@@ -32,6 +36,7 @@ public class ItemScanner {
      * @return
      */
     public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) throws IOException {
+        undoList.add(saleToAddTo.getMemento());
         Item ret;
         FileWriter logger = new FileWriter("src/main/se/kth/salessystem/integration/errorLogs.txt", true);
         Item temp = new Item(0, 0,0 ,"null", 0);
@@ -54,6 +59,12 @@ public class ItemScanner {
 
         return saleToAddTo.addItem(ret, ext);
 
+    }
+    public void undo(Sale saleToUse){
+        saleToUse.restoreFromMemento(undoList.get(undoList.size()-1));
+    }
+    public void undo(Sale saleToUse, int i){
+        saleToUse.restoreFromMemento(undoList.get(undoList.size()-i));
     }
 }
 

@@ -29,7 +29,7 @@ public class View {
 
         System.out.println("Making new purchase, customerID 69");
         cont.startNewSale(69);
-        System.out.println("Adding two tomatoes!");
+      /*  System.out.println("Adding two tomatoes!");
         cont.addItem(0, 2); //två tomater
         System.out.println("Adding one onion");
         cont.addItem(1); //en gulök
@@ -44,7 +44,11 @@ public class View {
         System.out.println("Adding hardcoded item that throws databaseException");
         cont.addItem(6);
         System.out.println("Ending purchase.");
-        System.out.println("RECEIPT \n\n");
+        System.out.println("RECEIPT \n\n");*/
+        cont.addItem(2);
+        cont.addItem(3);
+        cont.addItem(2);
+        cont.undo(2);
         if (!cont.endSale(50000, "Edvin", "Kassa 1")) System.out.println("Not enough funds!");
     }
 }

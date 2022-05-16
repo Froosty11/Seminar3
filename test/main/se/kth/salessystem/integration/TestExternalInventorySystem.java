@@ -1,4 +1,4 @@
-package se.kth.salessystem.integration;
+package main.se.kth.salessystem.integration;
 
 import main.se.kth.salessystem.integration.DatabaseNotFoundException;
 import main.se.kth.salessystem.integration.ExternalInventorySystem;
@@ -20,7 +20,7 @@ class TestExternalInventorySystem {
     @BeforeEach
     void setUp() {
         //beforeEach se.kth.salessystem.test is ran, we reset add some items to an inventory.
-        ext = new ExternalInventorySystem();
+        ext = ExternalInventorySystem.getInstance();
         item = new Item(4, 6, 0.5, "banana", 4);
         ext.addItem(item);
         item = new Item(10, 16, 0.6, "Nocco pear", 5);
@@ -37,7 +37,7 @@ class TestExternalInventorySystem {
     }
 
     @Test
-    void inStock() {
+    void testInStock() {
         boolean inList = false;
         for(int i = 0; i < ext.getLength() ; i++){ // checks all items.
             try{
@@ -54,12 +54,6 @@ class TestExternalInventorySystem {
         assertTrue(inList, "banana not in stock");
     }
 
-    @Test
-    void testInStock() {
-        //same here as above- incorrect junit testing
-        assertTrue(ext.inStock(4, 3), "could not find that many bananas in stock");
-
-    }
 
     @Test
     void testAddItem() {

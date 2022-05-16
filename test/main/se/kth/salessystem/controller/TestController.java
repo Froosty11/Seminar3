@@ -1,4 +1,4 @@
-package se.kth.salessystem.controller;
+package main.se.kth.salessystem.controller;
 
 
 import main.se.kth.salessystem.controller.Controller;
@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * So, I do know that it is not perfectly ok to do testing with the string- but to compare two sales
+ * in our current state would require us to addItems to both sales- which wouldn't make a difference since they're both
+ * running the exact same code. We'd have to implement a makeSaleFromTxt or hardcode it.
+ *
+ *
+ */
 class TestController {
     Controller controll1;
     String string;
@@ -33,7 +40,7 @@ class TestController {
      *
      */
     @Test
-    void startNewSale() {
+    void testStartNewSale() {
         controll1.startNewSale(1);
         controll1.addItem(1);
         boolean result = controll1.endSale(10000, "TEST", "TEST");
@@ -41,7 +48,7 @@ class TestController {
     }
 
     @Test
-    void addItem() {
+    void testAddItem() {
         boolean result = false;
         controll1.addItem(0);
         if (controll1.getString().equals("1x Tomat, Ekologisk -  24.5kr\n")) {
@@ -52,17 +59,17 @@ class TestController {
     }
 
     @Test
-    void endSale() {
+    void testEndSale() {
         boolean result = false;
         controll1.endSale(20, "Edvin", "fortnite");
-        if (controll1.getString() == null) {
+        if (controll1.getString() == null || controll1.getString() == "") {
             result = true;
         }
         assertTrue(result, "Controller.endSale failed junit se.kth.salessystem.test");
     }
 
     @Test
-    void terminate() {
+    void testTerminate() {
         boolean result = false;
         controll1.terminate();
         if (controll1.getString() == null) {
@@ -72,7 +79,7 @@ class TestController {
     }
 
     @Test
-    void addItems() {
+    void testAddItems() {
         boolean result = false;
         controll1.addItem(0, 2);
         if (controll1.getString().equals("2x Tomat, Ekologisk -  24.5kr\n")) {
@@ -81,4 +88,34 @@ class TestController {
         assertTrue(result, "Controller.addItems is failing se.kth.salessystem.test.");
 
     }
+
+    /**
+     * Checks if undo works by adding item, undoing it and then comparing it to an empty shopping cart.
+     *
+     */
+    @Test
+    void testUndo(){
+        boolean isCorrect = false;
+        controll1.addItem(1);
+        controll1.undo();
+        if(controll1.getString().equals("")) isCorrect = true;
+        assertTrue(isCorrect, "Error! Undo not reseting shopping cart to 0");
+    }
+
+    /**
+     *
+     */
+    @Test
+    void testUndos(){
+        boolean isCorrect  = false;
+        controll1.addItem(1, 2);
+        controll1.addItem(2, 2);
+        controll1.undo(2);
+        if(controll1.getString().equals("")) isCorrect = true;
+        assertTrue(isCorrect, "Undo not undoing multiple actions properly");
+
+
+    }
+
+
 }

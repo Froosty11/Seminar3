@@ -11,7 +11,7 @@ import main.se.kth.salessystem.controller.*;
 * TODO SEM 4:
 *   - Use exceptions for alternative flow 3.4A(handling of nonexistant itemID) ✓
 *   - Use exceptions for when database cannot be called, in our case we used calling for itemID 6 ✓
-*   -
+*   - Tests for everything uwu
 *   -
 *   -
 *   -

@@ -1,4 +1,4 @@
-package se.kth.salessystem.integration;
+package main.se.kth.salessystem.integration;
 import main.se.kth.salessystem.dtos.SaleDTO;
 import main.se.kth.salessystem.integration.AccountingSystem;
 import main.se.kth.salessystem.integration.ExternalInventorySystem;
@@ -21,7 +21,7 @@ class TestAccountingSystem {
 
         ac = new AccountingSystem();
         Sale temp = new Sale();
-        temp.addItems(3, 2, new ExternalInventorySystem());
+        temp.addItems(3, 2, ExternalInventorySystem.getInstance());
         dto = temp.endSale("uwu", "kassa 2");
     }
 
@@ -29,7 +29,7 @@ class TestAccountingSystem {
      * Tests registerSale
      */
     @Test
-    void registerSale() { //makes sure listOfSales contains the correct items after registering sales
+    void testRegisterSale() { //makes sure listOfSales contains the correct items after registering sales
         boolean result = false;
         ac.registerSale(dto);
         if (ac.getSaleDTO(dto.getSaleID()) != null) {
@@ -42,7 +42,7 @@ class TestAccountingSystem {
      * Tests getSaleDTO
      */
     @Test
-    void getSaleDTO() { // makes sure the dto contains all important information after getting
+    void testGetSaleDTO() { // makes sure the dto contains all important information after getting
         boolean expected = true;
         ac.registerSale(dto);
         boolean result = dto.equal(ac.getSaleDTO(dto.getSaleID()));
@@ -54,7 +54,7 @@ class TestAccountingSystem {
      * Ignore. Not used in current iteration.
      */
     @Test
-    void findAndGetSaleDTO() {
+    void testFindAndGetSaleDTO() {
         //since we're not using it currently- im not testing it either
 
 

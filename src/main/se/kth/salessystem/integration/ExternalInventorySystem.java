@@ -13,13 +13,14 @@ import java.util.Scanner;
  * Checks for instock, adding items, amount of items, etc.
  */
 public class ExternalInventorySystem {
+    private static ExternalInventorySystem instance = null;
     private List<Item> currentInventory = new ArrayList<>();
 
     /**
      * Constructor for making a new EXT-system. Loads inventory from ids.txt.
      * Edit txt if you want to add/remove/change items.
      */
-    public ExternalInventorySystem() {// makes a new EIS using a txt file that contains the "standard inventory"
+    private ExternalInventorySystem() {// makes a new EIS using a txt file that contains the "standard inventory"
         //which is default inventory and contains grocery items for taco tuesday
         try {
             Scanner scnr = new Scanner(new File("src/main/se/kth/salessystem/integration/ids.txt"));
@@ -119,4 +120,11 @@ public class ExternalInventorySystem {
         currentInventory.add(item);
 
     }
+    public static ExternalInventorySystem getInstance(){
+        if(instance == null){
+            instance = new ExternalInventorySystem();
+        }
+        return instance;
+    }
+
 }

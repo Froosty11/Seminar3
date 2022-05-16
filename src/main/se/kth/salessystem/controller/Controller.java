@@ -6,10 +6,7 @@ import main.se.kth.salessystem.dtos.SaleDTO;
 import main.se.kth.salessystem.dtos.StoreDTO;
 import main.se.kth.salessystem.integration.AccountingSystem;
 import main.se.kth.salessystem.integration.ReceiptPrinter;
-import main.se.kth.salessystem.model.ItemScanner;
-import main.se.kth.salessystem.model.Observer;
-import main.se.kth.salessystem.model.Receipt;
-import main.se.kth.salessystem.model.Sale;
+import main.se.kth.salessystem.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +30,7 @@ public class Controller {
     private List<Observer> observerList = new ArrayList<Observer>();
     private ItemScanner scnr;
 
+
     /**
     *
     * Pre-made Constructor for a controller. Has hardcoded calls for address, telephone number and name.
@@ -40,7 +38,7 @@ public class Controller {
     * */
     public Controller() {
         store = new StoreDTO("ICA NÄRA", "Björkvägen 22", "0733533596");
-        ext = new ExternalInventorySystem();
+        ext = ExternalInventorySystem.getInstance();
         act = new AccountingSystem();
         rp = new ReceiptPrinter();
         scnr = new ItemScanner(ext);
@@ -53,7 +51,7 @@ public class Controller {
     * */
     public Controller(String name, String address, String nmr){
         store = new StoreDTO(name, address, nmr);
-        ext = new ExternalInventorySystem();
+        ext = ExternalInventorySystem.getInstance();
         act = new AccountingSystem();
         rp = new ReceiptPrinter();
         scnr = new ItemScanner(ext);
@@ -106,6 +104,7 @@ public class Controller {
 
     public void terminate() {
         currentActive.terminateSale();
+
         currentActive = null;
     }
 
@@ -131,13 +130,28 @@ public class Controller {
  * @return a string that represents the current controller
  * */
     public String getString() {
-        if (currentActive.getProgress()) {
+        if (currentActive != null) {
             String str;
             str = currentActive.toString();
             return str;
         }
         return null;
 
+    }
+
+    /**
+     * Undos the last addItem using memento of the previous saleitems
+     */
+    public void undo(){
+        scnr.undo(currentActive);
+    }
+
+    /**
+     * Undos the previous i addItems using a memento of the previous list of items
+     * @param i amount of undos
+     */
+    public void undo(int i){
+        scnr.undo(currentActive, i);
     }
 
 

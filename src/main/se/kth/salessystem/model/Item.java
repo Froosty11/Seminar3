@@ -74,4 +74,8 @@ public class Item {
         this.quantity = 1;
         this.VAT = item.VAT;
     }
+    public Item clone(){
+        Item newItem = new Item(this.quantity, this.itemPrice, this.VAT, this.itemDesc, this.itemID);
+        return newItem;
+    }
 }

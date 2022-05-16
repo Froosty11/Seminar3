@@ -40,7 +40,6 @@ public class ItemNotFoundException extends Exception {
         StringBuilder strBu = new StringBuilder();
         strBu.append("Item Exception -" + java.time.LocalDate.now() + java.time.LocalTime.now() + "\n");
         strBu.append(this.getMessage() + "\n");
-        strBu.append(this.getStackTrace().toString());
         strBu.append("\n End of Log \n\n");
         return strBu.toString();
     }

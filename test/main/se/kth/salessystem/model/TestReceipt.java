@@ -1,4 +1,4 @@
-package se.kth.salessystem.model;
+package main.se.kth.salessystem.model;
 
 import main.se.kth.salessystem.dtos.SaleDTO;
 import main.se.kth.salessystem.dtos.StoreDTO;
@@ -19,7 +19,7 @@ class TestReceipt {
 
     @BeforeEach
     void setUp() { // sets up a string equal to a DTO
-        ext = new ExternalInventorySystem();
+        ext = ExternalInventorySystem.getInstance();
         Item chips = new Item(6, 15.0, 0.25, "chips", 3);
         ext.addItem(chips);
         Sale sale = new Sale();
