@@ -20,7 +20,8 @@ Package Diagram
 
 1.4 Interaction Diagram enterQuantity
 
-<img width="1095" alt="Screenshot 2022-05-03 at 11 02 50" src="https://user-images.githubusercontent.com/100201381/166428342-614fde62-4a19-469b-9b45-65d1da1058c8.png">
+![enterQuantity](https://user-images.githubusercontent.com/100201381/168841521-f742c80d-5fe5-4224-96b2-6877dded4409.png)
+
 
 1.5 Interaction Diagram endSale
 
