@@ -20,7 +20,7 @@ Package Diagram
 
 1.4 Interaction Diagram enterQuantity
 
-![enterQuantity](https://user-images.githubusercontent.com/100201381/168841521-f742c80d-5fe5-4224-96b2-6877dded4409.png)
+![enterQuantity](https://user-images.githubusercontent.com/100201381/168841744-f97868bd-bb06-44f5-aefc-79b9a469ee6f.png)
 
 
 1.5 Interaction Diagram endSale
