@@ -29,6 +29,8 @@ public class Controller {
     private ReceiptPrinter rp;
     private StoreDTO store;
     private ItemScanner scnr;
+    private TotalRevenueFileOutput trfo;
+    private TotalRevenueView trv;
 
 
     /**
@@ -42,6 +44,9 @@ public class Controller {
         act = new AccountingSystem();
         rp = new ReceiptPrinter();
         scnr = new ItemScanner(ext);
+        trfo = new TotalRevenueFileOutput();
+        trv = new TotalRevenueView();
+
     }
     /**
     * Constructor with the actual parameters. Not used anywhere currently.
@@ -55,6 +60,8 @@ public class Controller {
         act = new AccountingSystem();
         rp = new ReceiptPrinter();
         scnr = new ItemScanner(ext);
+        trfo = new TotalRevenueFileOutput();
+        trv = new TotalRevenueView();
 
     }
 
@@ -64,8 +71,8 @@ public class Controller {
     * */
     public boolean startNewSale(int customerID) {
         currentActive = new Sale();
-            currentActive.addObserver(new TotalRevenueFileOutput() );
-        currentActive.addObserver(new TotalRevenueView());
+        currentActive.addObserver(trfo);
+        currentActive.addObserver(trv);
         return true;
     }
     /**
