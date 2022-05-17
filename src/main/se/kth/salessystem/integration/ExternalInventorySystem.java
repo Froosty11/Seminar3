@@ -49,7 +49,7 @@ public class ExternalInventorySystem {
         try {
             return currentInventory.get(id);
         }catch (IndexOutOfBoundsException e){
-            throw new ItemNotFoundException(id);
+            throw new ItemNotFoundException(id, "Barcode is incorrect, could not find item with identifier " + id );
         }
     }
 
@@ -124,6 +124,8 @@ public class ExternalInventorySystem {
         if(instance == null){
             instance = new ExternalInventorySystem();
         }
+        else
+            System.out.println("ExternalInventory instance already exists- giving you the existing one.");
         return instance;
     }
 

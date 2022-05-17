@@ -1,4 +1,5 @@
 package main.se.kth.salessystem.integration;
+import main.se.kth.salessystem.controller.Controller;
 import main.se.kth.salessystem.dtos.SaleDTO;
 import main.se.kth.salessystem.integration.AccountingSystem;
 import main.se.kth.salessystem.integration.ExternalInventorySystem;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestAccountingSystem {
+    private Controller ctrl;
     private AccountingSystem ac;
     private SaleDTO dto;
 
@@ -18,10 +20,10 @@ class TestAccountingSystem {
      */
     @BeforeEach
     void setUp() { //Happens before each se.kth.salessystem.test
-
+        ctrl = new Controller();
         ac = new AccountingSystem();
         Sale temp = new Sale();
-        temp.addItems(3, 2, ExternalInventorySystem.getInstance());
+        ctrl.addItem(3, 2);
         dto = temp.endSale("uwu", "kassa 2");
     }
 

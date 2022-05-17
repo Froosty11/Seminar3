@@ -74,7 +74,7 @@ public class Receipt {
         for (Item item : listOfItems) {
             str.append(item.quantity + " " + item.itemDesc + " " + item.itemPrice + " \n");
         }
-        str.append("Change: " + (this.paid - this.totalPrice) + "\n");
+        str.append("Change: " + (this.paid - this.totalPrice - this.totalVAT) + "\n");
         str.append("Subtotal:" + this.totalPrice + " \n");
         str.append("VAT total: " + this.totalVAT + "\n");
         str.append("TOTAL: " + (this.totalPrice + this.totalVAT) + " \n");

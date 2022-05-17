@@ -27,8 +27,6 @@ public class Sale {
      */
     public Sale() {
         Random rndm = new Random();
-        observerList.add(new TotalRevenueView());
-        observerList.add(new TotalRevenueFileOutput());
         listOfItems.clear();
         inProgress = true;
         currentTotal = 0;
@@ -45,7 +43,7 @@ public class Sale {
      * @param ext ext to check storage for
      * @return true if the item exists in inventory- false if any error
      */
-    public boolean addItem(Item item, ExternalInventorySystem ext) { // new addItem function taking into account that we now have Scanning
+    boolean addItem(Item item, ExternalInventorySystem ext) { // new addItem function taking into account that we now have Scanning
         boolean addedItemSuccesfully = false;
         if (ext.inStock(item.itemID)) {
             for (Item i :
@@ -75,15 +73,13 @@ public class Sale {
      * @param ext   InventorySystem to check stock for
      * @return true if all items exist inStock.
      */
-    public boolean addItems(int itemID, int quantity, ExternalInventorySystem ext) {
+    boolean addItems(int itemID, int quantity, ExternalInventorySystem ext) {
         boolean addItemWasSuccess = false;
         if (ext.inStock(itemID, quantity)) {
             for (int i = 0; i < quantity; i++) {
                 addItemWasSuccess = this.addItems(itemID, 1, ext);
             }
         }
-
-
         return addItemWasSuccess;
     }
 
@@ -137,7 +133,7 @@ public class Sale {
         }
     }
     public void addObserver(Observer observer){
-        addObserver(observer);
+        observerList.add(observer);
     }
     public SaleMemento getMemento(){
         return new SaleMemento(this.listOfItems, this.totalPrice);

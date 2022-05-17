@@ -27,9 +27,10 @@ public class View {
      */
     public void hardCodedControllerCalls() {
 
-        System.out.println("Making new purchase, customerID 69");
+
+        System.out.println("Starts one new sale-}\n");
         cont.startNewSale(69);
-      /*  System.out.println("Adding two tomatoes!");
+        System.out.println("Adding two tomatoes!");
         cont.addItem(0, 2); //två tomater
         System.out.println("Adding one onion");
         cont.addItem(1); //en gulök
@@ -39,16 +40,15 @@ public class View {
         cont.addItem(69, 4); //This satisfies 3.4A
         System.out.println("Adding ground meat");
         cont.addItem(3); //köttfärs
-        System.out.println("Adding more taco items");
-        cont.addItem(4);
+        System.out.println("Adding 2x tortilla bread");
+        cont.addItem(4, 2);
         System.out.println("Adding hardcoded item that throws databaseException");
         cont.addItem(6);
-        System.out.println("Ending purchase.");
-        System.out.println("RECEIPT \n\n");*/
-        cont.addItem(2);
-        cont.addItem(3);
-        cont.addItem(2);
+        System.out.println("Undoing two steps! This will delete the tortillas, but will not delete more because" +
+                "it counts the failed DatabaseException as an undo!");
         cont.undo(2);
+        System.out.println("Sample Receipt\n");
+
         if (!cont.endSale(50000, "Edvin", "Kassa 1")) System.out.println("Not enough funds!");
     }
 }

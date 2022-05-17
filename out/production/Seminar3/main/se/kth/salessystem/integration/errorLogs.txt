@@ -89,3 +89,323 @@ Database not found, try reconnecting
 [Ljava.lang.StackTraceElement;@42110406
 End of Log 
 
+Item Exception -2022-05-1612:45:25.662364600
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T12:45:25.669363600
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@531d72ca
+End of Log 
+
+Item Exception -2022-05-1612:56:28.473294700
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T12:56:28.483296500
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1613:10:59.032508200
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T13:10:59.040512500
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1613:19:18.553619200
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T13:19:18.562621100
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1613:21:05.485232500
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T13:21:05.495234400
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1613:22:04.655923900
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T13:22:04.662926200
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@42110406
+End of Log 
+
+Item Exception -2022-05-1613:24:08.134441
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T13:24:08.142438600
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@42110406
+End of Log 
+
+Item Exception -2022-05-1613:25:15.513208500
+Barcode is incorrect, could not find item with identifier 69.  Please try again.
+
+ End of Log 
+
+Database Exception -  2022-05-16T13:25:15.521208400
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1710:58:03.972718600
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T10:58:03.994723600
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1711:09:45.432455
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T11:09:45.453459800
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@42110406
+End of Log 
+
+Item Exception -2022-05-1711:10:25.133619
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T11:10:25.136619800
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@4bf558aa
+End of Log 
+
+Item Exception -2022-05-1711:21:29.351121500
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T11:21:29.369126500
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1711:23:45.415724600
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T11:23:45.431730700
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:51:07.159634900
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:51:07.177639
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:52:58.412939800
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:52:58.429943900
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:53:12.837737600
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:53:12.856744500
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:54:48.073220200
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:54:48.090223500
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:55:01.856761500
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:55:01.871768800
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@42110406
+End of Log 
+
+Item Exception -2022-05-1712:55:27.637451500
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:55:27.656455700
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:55:45.747064900
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:55:45.764068700
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:56:04.694448
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:56:04.712453
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:56:17.235034500
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:56:17.255035600
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:56:26.632643300
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:56:26.652648
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:56:43.460939100
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:56:43.479945
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@6d5380c2
+End of Log 
+
+Item Exception -2022-05-1712:56:59.362987300
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:56:59.381992
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:57:13.234313700
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:57:13.254316
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:57:26.987436500
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:57:27.003441900
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1712:58:06.040489800
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:58:06.060492700
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@6d5380c2
+End of Log 
+
+Item Exception -2022-05-1712:59:00.208152800
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T12:59:00.228158200
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@531d72ca
+End of Log 
+
+Item Exception -2022-05-1713:19:37.238920100
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T13:19:37.258925800
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1713:21:08.594495100
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T13:21:08.608497400
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@67424e82
+End of Log 
+
+Item Exception -2022-05-1713:21:21.824121100
+Barcode is incorrect, could not find item with identifier 69
+
+ End of Log 
+
+Database Exception -  2022-05-17T13:21:21.846126600
+Database not found, try reconnecting
+[Ljava.lang.StackTraceElement;@6d5380c2
+End of Log 
+

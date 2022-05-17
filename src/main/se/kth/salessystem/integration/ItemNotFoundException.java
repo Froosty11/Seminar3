@@ -9,7 +9,8 @@ public class ItemNotFoundException extends Exception {
     /**
      * Constructor for INFException
      */
-    public ItemNotFoundException(int id){
+    public ItemNotFoundException(int id, String errorMsg){
+        super(errorMsg);
         this.itemIdentifier = id;
     }
 
@@ -21,16 +22,6 @@ public class ItemNotFoundException extends Exception {
         return this.itemIdentifier;
     }
 
-    /**
-     * Returns a string containing the proper information to print the error to user.
-     * @return
-     */
-    public String getMessage(){
-        String s = ("Barcode is incorrect, could not find item with identifier " +
-                this.itemIdentifier +".  " +
-                "Please try again.");
-        return s;
-    }
 
     /**
      * Admin message for writing to errorLogs

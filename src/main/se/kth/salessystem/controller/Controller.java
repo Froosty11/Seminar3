@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.se.kth.salessystem.integration.ExternalInventorySystem;
+import main.se.kth.salessystem.view.TotalRevenueView;
 
 
 /**
@@ -27,7 +28,6 @@ public class Controller {
     private AccountingSystem act;
     private ReceiptPrinter rp;
     private StoreDTO store;
-    private List<Observer> observerList = new ArrayList<Observer>();
     private ItemScanner scnr;
 
 
@@ -64,6 +64,8 @@ public class Controller {
     * */
     public boolean startNewSale(int customerID) {
         currentActive = new Sale();
+            currentActive.addObserver(new TotalRevenueFileOutput() );
+        currentActive.addObserver(new TotalRevenueView());
         return true;
     }
     /**

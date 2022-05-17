@@ -39,32 +39,38 @@ public class ItemScanner {
         undoList.add(saleToAddTo.getMemento());
         Item ret;
         FileWriter logger = new FileWriter("src/main/se/kth/salessystem/integration/errorLogs.txt", true);
-        Item temp = new Item(0, 0,0 ,"null", 0);
+        Item temp;
         try{
             temp = ext.getItem(barcode);
         }
         catch (ItemNotFoundException e) {
             System.out.println(e.getMessage());
             logger.write(e.getAdminMessage());
-
+            logger.close();
+            return false;
         }
         catch (DatabaseNotFoundException dbException){
-            //print message for user
             System.out.println(dbException.getMessage());
-            //log message for admin
             logger.write(dbException.getAdminMessage());
+            logger.close();
+            return false;
         }
         logger.close();
         ret = new Item(count, temp.itemPrice, temp.VAT, temp.itemDesc, temp.itemID);
-
         return saleToAddTo.addItem(ret, ext);
 
     }
     public void undo(Sale saleToUse){
+
         saleToUse.restoreFromMemento(undoList.get(undoList.size()-1));
+        undoList.remove(undoList.size()-1);
     }
     public void undo(Sale saleToUse, int i){
+        int temp = undoList.size() - i;
         saleToUse.restoreFromMemento(undoList.get(undoList.size()-i));
+        for(int j = undoList.size()-1; j >= temp   ; j--){
+            undoList.remove(undoList.size()-1);
+        }
     }
 }
 
