@@ -9,11 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseNotFoundExceptionTest {
 
-    private Sale sale ;
     private ExternalInventorySystem ext;
     @BeforeEach
     void setUp() {
-        sale = new Sale();
         ext = ExternalInventorySystem.getInstance();
     }
 
@@ -24,15 +22,15 @@ class DatabaseNotFoundExceptionTest {
     @Test
     void testGetAdminMessage() {
         try{
-            sale.addItem(ext.getItem(6), ext);
+            ext.getItem(6);
         }
         catch (DatabaseNotFoundException dbExc){
             boolean databaseErrorCorrespondsToError = false;
-            String s = dbExc.getAdminMessage().substring(51);
+            String s = dbExc.getAdminMessage().substring(dbExc.getAdminMessage().indexOf('\n'));
             System.out.println(s);
             if(s.equals("\n" +
                     "Database not found, try reconnecting\n" +
-                    dbExc.getStackTrace().toString() +
+                    dbExc.getStackTrace()[0].toString()+
                     "\n" +
                     "End of Log \n\n")) databaseErrorCorrespondsToError = true;
             assertTrue(databaseErrorCorrespondsToError, "Database error");
