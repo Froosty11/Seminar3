@@ -10,6 +10,11 @@ public class DatabaseNotFoundException extends Exception{
         super(messageForUser,excep);
     }
 
+    /**
+     * GetAdmin message is used to store the final version of the stacktrace- should honestly store the full amount
+     * by running through the Array.
+     * @return Returns a string containing the stack, a message, the time and date.
+     */
     public String getAdminMessage(){
         StringBuilder strBu = new StringBuilder();
         strBu.append("Database Exception -  " + java.time.LocalDateTime.now()+ "\n");

@@ -12,6 +12,9 @@ import java.util.List;
 /**
  * ItemScanner works like handling class for adding items.
  * Instead of adding an item using the item class we can use the external inventory system
+ *
+ * The reason we have it set up like this is to keep good encapsulation, handling all edits to the ItemList of sale
+ * using ItemScanner. Should maybe be renamed to "ItemHandler" or something similar
  */
 public class ItemScanner {
     private ExternalInventorySystem ext;
@@ -60,11 +63,23 @@ public class ItemScanner {
         return saleToAddTo.addItem(ret, ext);
 
     }
-    public void undo(Sale saleToUse){
 
+    /**
+     * As our ItemScanner acts as the caretaker for our memento pattern, this also has to include an undo function.
+     * @param saleToUse usually, this is simply currentSale.
+     */
+    public void undo(Sale saleToUse){
         saleToUse.restoreFromMemento(undoList.get(undoList.size()-1));
         undoList.remove(undoList.size()-1);
     }
+
+    /**
+     * Undo's an i amount of actions to the itemList
+     * As of current implementation, this also "tries" to undo failed addItems
+     * TODO: Probably should be fixed asap - Edvin
+     * @param saleToUse usually currentSale- other sale's shouldn't really be undone
+     * @param i         amount of steps to "undo". Has to be less than steps done.
+     */
     public void undo(Sale saleToUse, int i){
         int temp = undoList.size() - i;
         saleToUse.restoreFromMemento(undoList.get(undoList.size()-i));

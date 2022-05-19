@@ -2,6 +2,7 @@ package main.se.kth.salessystem.dtos;
 
 /**
  * Information transference class StoreDTO contains the name, the address and the number of the store.
+ *
  */
 public class StoreDTO {
 

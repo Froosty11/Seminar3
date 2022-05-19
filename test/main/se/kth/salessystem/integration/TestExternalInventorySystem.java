@@ -16,10 +16,12 @@ class TestExternalInventorySystem {
     private Item item;
     private ExternalInventorySystem ext;
 
+    /**
+     * Before all tests- we're adding two trandom items to storage.
+     */
 
     @BeforeEach
     void setUp() {
-        //beforeEach se.kth.salessystem.test is ran, we reset add some items to an inventory.
         ext = ExternalInventorySystem.getInstance();
         item = new Item(4, 6, 0.5, "banana", 4);
         ext.addItem(item);
@@ -29,13 +31,21 @@ class TestExternalInventorySystem {
 
     }
 
+    /**
+     * Teardown to null information.
+     */
     @AfterEach
     void tearDown() {
-        //should null here, but GC can handle it lol
+        item = null;
+        ext = null;
 
 
     }
 
+    /**
+     * Tests if in stock is correct about being inStock about something.   We do this by looping
+     * through the ext for the correct item, then comparing it to the answer from inStock itself.
+     */
     @Test
     void testInStock() {
         boolean inList = false;
@@ -55,9 +65,12 @@ class TestExternalInventorySystem {
     }
 
 
+    /**
+     * Test's adding an item.
+     * We use instock here since it's already tested- but in reality we shouldnn't
+     */
     @Test
     void testAddItem() {
-        //this is fine- since we've tested it previously
         assertTrue(ext.inStock(5), "Nocco pear is in stock");
     }
 }

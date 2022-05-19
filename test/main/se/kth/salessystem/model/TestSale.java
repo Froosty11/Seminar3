@@ -49,6 +49,10 @@ class TestSale {
         assertEquals(expected, result, "Sale not terminated properly.");
     }
 
+    /**
+     * tests ending the sale by sending it through other methods, which is not perfect.
+     * We check getprogress, the move to accounting etc.
+     */
     @Test
     void endSale() {
         /*

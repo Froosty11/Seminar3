@@ -33,12 +33,13 @@ public class View {
         cont.addItem(2, 2);
         cont.addItem(4, 2);
         cont.endSale(200, "Yas", "Kassa 1");
+        System.out.println("Starts a second new sale! \n");
         cont.startNewSale(67);
         cont.addItem(1,2);
         cont.addItem(2);
         cont.endSale(200, "Edvin", "Kassa 2");
         System.out.println("Sample Receipt 1\n");
 
-        //if (!cont.endSale(50000, "Edvin", "Kassa 1")) System.out.println("Not enough funds!");
+        if (!cont.endSale(50000, "Edvin", "Kassa 1")) System.out.println("Not enough funds!");
     }
 }

@@ -16,7 +16,7 @@ public class ItemNotFoundException extends Exception {
 
     /**
      * Returns the id of the error
-     * @return
+     * @return the ID that was requested for
      */
     public int getIncorrectID(){
         return this.itemIdentifier;

@@ -13,7 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * in our current state would require us to addItems to both sales- which wouldn't make a difference since they're both
  * running the exact same code. We'd have to implement a makeSaleFromTxt or hardcode it.
  *
- *
+ *  After further delibiration i've decided to keep it the same- Edvin
+ *  We'd like to change this in the future by implementing a package private way to get the currentActive sale
+ *  then compare that.
  */
 class TestController {
     Controller controll1;
@@ -47,6 +49,10 @@ class TestController {
         assertTrue(result, "startNewSale controller error");
     }
 
+    /**
+     * tests addItem by adding an item- then checks if the string contains that information
+     *
+     */
     @Test
     void testAddItem() {
         boolean result = false;
@@ -58,16 +64,24 @@ class TestController {
 
     }
 
+    /**
+     * Checks if the sale is ended by starting an empty sale, shoud therefor
+     * contain the empty string of items. We can't check for prograess- as that outside the controlls
+     * scope.
+     */
     @Test
     void testEndSale() {
         boolean result = false;
         controll1.endSale(20, "Edvin", "fortnite");
-        if (controll1.getString() == null || controll1.getString() == "") {
+        if ((controll1.getString() == null || controll1.getString() == "")) {
             result = true;
         }
         assertTrue(result, "Controller.endSale failed junit se.kth.salessystem.test");
     }
 
+    /**
+     * Tests terminate
+     */
     @Test
     void testTerminate() {
         boolean result = false;
@@ -78,6 +92,10 @@ class TestController {
         assertTrue(result, "Controller.terminate failed junit se.kth.salessystem.test");
     }
 
+    /**
+     * Tests adding multiple items.
+     * We do this by a simple string comparison.
+     */
     @Test
     void testAddItems() {
         boolean result = false;
@@ -103,7 +121,8 @@ class TestController {
     }
 
     /**
-     *
+     *Checks undo by adding two items then undoing both steps- then checking if its equal
+     * to an empty string.
      */
     @Test
     void testUndos(){

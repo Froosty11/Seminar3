@@ -117,7 +117,13 @@ public class Sale {
     public boolean getProgress() {
         return inProgress;
     }
-@Override
+
+    /**
+     * Overridden toString method to convert any sale to string o
+     * Only return the items in the sale- noting else.
+     * @return
+     */
+    @Override
     public String toString() { // converts a sale to string
         StringBuilder str = new StringBuilder();
 
@@ -127,23 +133,45 @@ public class Sale {
         return str.toString();
     }
 
+    /**
+     * Updates all observers in the observerList. Usually called after every ended sale.
+     * @param amount amount of money to update observers of
+     */
     public void updateObservers(double amount){
         for (Observer o : observerList) {
             o.update(amount);
         }
     }
+    /**
+     *  Adds an observer to the observerList. According to the obsrever pattern.
+     *  Currently, we're just observing one thing in two ways, the revenue
+     * @param observer the observer to add.
+     */
     public void addObserver(Observer observer){
         observerList.add(observer);
     }
+
+    /**
+     * Returns a sales memenento- the storage class used for the MementoPattern.
+     * Used after every modification of the itemList.
+     * @return a memento containing the listOfItems and the price.
+     */
     public SaleMemento getMemento(){
         return new SaleMemento(this.listOfItems, this.totalPrice);
     }
+
+    /**
+     * Restores a currently active sale to a previous state- using the salemMementos
+     * listOfItems and price- therefore allowing us to undo edits
+     * @param memento the memento to restore to- doesn't actually matter if its from this sale or another one
+     */
     public void restoreFromMemento(SaleMemento memento){
         this.listOfItems = memento.getOldSaleItems();
         this.totalPrice = memento.getPrice();
     }
     /**
      * Our implementation of the Memento pattern
+     * We store the Sale's listOfItems and totalPrice into a memento for further use.
      * <a href="https://en.wikipedia.org/wiki/Memento_pattern#Java_example">https://en.wikipedia.org/wiki/Memento_pattern#Java_example</a>
      *
      * We decided to store our state as the full list.
@@ -151,6 +179,14 @@ public class Sale {
     public static class SaleMemento {
         private final List<Item> oldSaleItems;
         private final double price;
+
+        /**
+         * Construtor for the saleMemento
+         * We could've just used the Sale class instance itself- but that's a lot more data
+         * then we need.
+         * @param items a list of items from the previous sale.
+         * @param price the price of the list
+         */
         public SaleMemento(List<Item> items, double price){
             oldSaleItems = new ArrayList<>();
             for (Item i :
@@ -159,9 +195,19 @@ public class Sale {
             }
             this.price = price;
         }
+
+        /**
+         * Get's a list of items from the saleMemento.
+         * @return full list of items in a java.lang.List
+         */
         private List<Item> getOldSaleItems(){
             return oldSaleItems;
         }
+
+        /**
+         * gets the price of the items in a saleMemento
+         * @return price in a double
+         */
         private double getPrice(){
             return price;
         }

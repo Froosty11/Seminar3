@@ -120,6 +120,13 @@ public class ExternalInventorySystem {
         currentInventory.add(item);
 
     }
+
+    /**
+     * This is our getInstance function for the Singleton pattern. It's a constructor that only runs the first time
+     * it is called- and thereafter only returning the already existing one. This gives us still a public access
+     *
+     * @return Singleton ExternalInventorySystem
+     */
     public static ExternalInventorySystem getInstance(){
         if(instance == null){
             instance = new ExternalInventorySystem();

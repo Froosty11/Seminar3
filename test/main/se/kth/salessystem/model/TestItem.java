@@ -23,8 +23,11 @@ class TestItem {
         str = null;
     }
 
+    /**
+     * tests if the string is correct. not needed apparently - edvin
+     */
     @Test
-    void toStringTest() {
+    void testToString() {
         boolean expectedResult = true;
         boolean result = str.equals(item.toString());
         assertEquals(expectedResult, result, "toString se.kth.salessystem.test unsuccessful");

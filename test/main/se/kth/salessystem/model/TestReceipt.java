@@ -44,8 +44,11 @@ class TestReceipt {
         rec = null;
     }
 
+    /**
+     * Compares a string of the dto or not. We could just use contains instead to be lesss certain
+     */
     @Test
-    void receiptToStringTest() { //compares string to dto output
+    void testReceiptToString() { //compares string to dto output
         boolean expectedResult = true;
         String st2 = rec.toString();
         boolean result = str.equals(st2);
