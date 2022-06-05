@@ -43,7 +43,8 @@ class TestController {
 
     /**
      * tests starting a new sale.
-     *
+     * @throws DatabaseNotFoundException never
+     * @throws ItemNotFoundException never
      */
     @Test
     void testStartNewSale() throws DatabaseNotFoundException, ItemNotFoundException {
@@ -55,7 +56,8 @@ class TestController {
 
     /**
      * tests addItem by adding an item- then checks if the string contains that information
-     *
+     * @throws DatabaseNotFoundException never
+     * @throws ItemNotFoundException never
      */
     @Test
     void testAddItem() throws DatabaseNotFoundException, ItemNotFoundException {
@@ -99,6 +101,8 @@ class TestController {
     /**
      * Tests adding multiple items.
      * We do this by a simple string comparison.
+     *@throws DatabaseNotFoundException never
+     *@throws ItemNotFoundException never
      */
     @Test
     void testAddItems() throws DatabaseNotFoundException, ItemNotFoundException {
@@ -113,7 +117,8 @@ class TestController {
 
     /**
      * Checks if undo works by adding item, undoing it and then comparing it to an empty shopping cart.
-     *
+     * @throws DatabaseNotFoundException never
+     * @throws ItemNotFoundException never
      */
     @Test
     void testUndo() throws DatabaseNotFoundException, ItemNotFoundException {
@@ -127,6 +132,8 @@ class TestController {
     /**
      *Checks undo by adding two items then undoing both steps- then checking if its equal
      * to an empty string.
+     *@throws DatabaseNotFoundException never
+     * @throws ItemNotFoundException never
      */
     @Test
     void testUndos() throws DatabaseNotFoundException, ItemNotFoundException {

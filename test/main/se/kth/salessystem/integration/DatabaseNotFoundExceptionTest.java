@@ -23,6 +23,9 @@ class DatabaseNotFoundExceptionTest {
     void tearDown() {
     }
 
+    /**
+     * Should be changed to getMessage override- we should make our own function for user messages.
+     */
     @Test
     void testGetAdminMessage() {
         boolean databaseErrorCorrespondsToError = false;

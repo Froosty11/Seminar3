@@ -56,6 +56,8 @@ public class Controller {
      * Adds one item to the currentSale.
      *
      * @param itemID the itemID of the item that should be added
+     * @throws DatabaseNotFoundException If itemid is 6 or database not connected.
+     * @throws ItemNotFoundException If itemID is not a correct item.
      */
     public boolean addItem(int itemID) throws DatabaseNotFoundException, ItemNotFoundException {
 
@@ -94,7 +96,10 @@ public class Controller {
     /**
      * @param itemID the itemID of the added item
      * @param count  the amount of items added
+     * @throws DatabaseNotFoundException If itemid is 6 or database not connected.
+     * @throws ItemNotFoundException If itemID is not a correct item.
      * @return only returns true currently* should defintely check through each one.
+     *
      */
     public boolean addItem(int itemID, int count) throws ItemNotFoundException, DatabaseNotFoundException {
             scnr.addItemFromBarcode(itemID, currentActive, count);

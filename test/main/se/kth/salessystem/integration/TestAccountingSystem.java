@@ -21,7 +21,10 @@ class TestAccountingSystem {
 
     /**
      * Setups for potential AC-testing
+     * @throws DatabaseNotFoundException never
+     * @throws ItemNotFoundException never
      */
+
     @BeforeEach
     void setUp() throws DatabaseNotFoundException, ItemNotFoundException { //Happens before each se.kth.salessystem.test
         ctrl = new Controller(new TotalRevenueFileOutput(), new TotalRevenueView());

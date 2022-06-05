@@ -36,7 +36,8 @@ public class ItemScanner {
      * @param barcode the itemID/Barcode. We don't have a physical barcode scanner so its just an int
      * @param saleToAddTo sale to add item to
      * @param count amount of items to add
-     * @throws IOException an exception for when filewriter cant write.
+     * @throws DatabaseNotFoundException If itemid is 6 or database not connected.
+     * @throws ItemNotFoundException If itemID is not a correct item.
      * @return
      */
     public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) throws ItemNotFoundException, DatabaseNotFoundException {
