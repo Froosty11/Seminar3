@@ -42,6 +42,8 @@ public class ExternalInventorySystem {
     /**
      * Gets an item from the inventory.
      * @param id the id of the item ur looking from. Would be the index in the currentInventory list.
+     * @throws ItemNotFoundException if an item doesn't exist in inventory
+     * @throws DatabaseNotFoundException if the item requested is 6, or the database is offline
      * @return currentInventory[id] item
      */
     public Item getItem(int id) throws ItemNotFoundException, DatabaseNotFoundException{

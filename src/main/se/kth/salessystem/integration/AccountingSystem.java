@@ -32,11 +32,8 @@ public class AccountingSystem {
      */
     public boolean registerSale(SaleDTO dto) {
         //Registers a new sale onto the SaleList stored in AccountSystem.
-        if (allSales.get(dto.getSaleID()) != null) {
             allSales.set(dto.getSaleID(), dto);
             return true;
-        }
-        return false;
     }
 
     /**

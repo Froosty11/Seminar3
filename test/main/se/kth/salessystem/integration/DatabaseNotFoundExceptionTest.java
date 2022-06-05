@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests a databse not connecting by calling the hardcoded 6 to check if the error message is correct.
+ */
+
 class DatabaseNotFoundExceptionTest {
 
     private ExternalInventorySystem ext;
@@ -21,23 +25,21 @@ class DatabaseNotFoundExceptionTest {
 
     @Test
     void testGetAdminMessage() {
+        boolean databaseErrorCorrespondsToError = false;
+
         try{
             ext.getItem(6);
         }
         catch (DatabaseNotFoundException dbExc){
-            boolean databaseErrorCorrespondsToError = false;
             String s = dbExc.getAdminMessage().substring(dbExc.getAdminMessage().indexOf('\n'));
             System.out.println(s);
-            if(s.equals("\n" +
-                    "Database not found, try reconnecting\n" +
-                    dbExc.getStackTrace()[0].toString()+
-                    "\n" +
-                    "End of Log \n\n")) databaseErrorCorrespondsToError = true;
-            assertTrue(databaseErrorCorrespondsToError, "Database error");
+            if(s.contains("base not found, try reconnecting")) databaseErrorCorrespondsToError = true;
 
         }
         catch (ItemNotFoundException itemNoFound){
             itemNoFound.getStackTrace();
         }
+        assertTrue(databaseErrorCorrespondsToError, "Database error");
+
     }
 }

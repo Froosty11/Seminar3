@@ -12,6 +12,9 @@ import javax.xml.crypto.Data;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the itemNotFoundException
+ */
 class ItemNotFoundExceptionTest {
      private ExternalInventorySystem ext;
     @BeforeEach
@@ -25,7 +28,7 @@ class ItemNotFoundExceptionTest {
     }
 
     @Test
-    void getIncorrectID() {
+    void testGetIncorrectID() {
         boolean isCorrect = false;
         try{
             ext.getItem(29);
@@ -43,7 +46,7 @@ class ItemNotFoundExceptionTest {
     }
 
     @Test
-    void getMessage() {
+    void testGetMessage() {
         boolean msgEqualsExpectedMessage = false;
 
         try{
@@ -58,15 +61,15 @@ class ItemNotFoundExceptionTest {
     }
 
     @Test
-    void getAdminMessage() {
+    void testGetAdminMessage() {
         boolean msgEqualsExpectedMessage = false;
 
         try{
             ext.getItem(2321);
         }catch (ItemNotFoundException exception){
-            String s = exception.getAdminMessage().substring(44);
+            String s = exception.getAdminMessage();
             System.out.println(s);
-            if(s.equals("\n" +
+            if(s.contains("\n" +
                     "Barcode is incorrect, could not find item with identifier 2321\n" +
                     "\n" +
                     " End of Log \n" +

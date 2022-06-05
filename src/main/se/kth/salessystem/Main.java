@@ -1,5 +1,6 @@
 package main.se.kth.salessystem;
 
+import main.se.kth.salessystem.integration.TotalRevenueFileOutput;
 import main.se.kth.salessystem.view.*;
 import main.se.kth.salessystem.controller.*;
 
@@ -10,7 +11,9 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        Controller c = new Controller();
+        TotalRevenueView view = new TotalRevenueView();
+        TotalRevenueFileOutput file = new TotalRevenueFileOutput();
+        Controller c = new Controller(file, view);
         View v = new View(c);
         v.hardCodedControllerCalls();
     }

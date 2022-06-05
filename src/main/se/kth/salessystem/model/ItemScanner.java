@@ -36,29 +36,14 @@ public class ItemScanner {
      * @param barcode the itemID/Barcode. We don't have a physical barcode scanner so its just an int
      * @param saleToAddTo sale to add item to
      * @param count amount of items to add
+     * @throws IOException an exception for when filewriter cant write.
      * @return
      */
-    public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) throws IOException {
+    public boolean addItemFromBarcode(int barcode, Sale saleToAddTo, int count) throws ItemNotFoundException, DatabaseNotFoundException {
         undoList.add(saleToAddTo.getMemento());
         Item ret;
-        FileWriter logger = new FileWriter("src/main/se/kth/salessystem/integration/errorLogs.txt", true);
         Item temp;
-        try{
-            temp = ext.getItem(barcode);
-        }
-        catch (ItemNotFoundException e) {
-            System.out.println(e.getMessage());
-            logger.write(e.getAdminMessage());
-            logger.close();
-            return false;
-        }
-        catch (DatabaseNotFoundException dbException){
-            System.out.println(dbException.getMessage());
-            logger.write(dbException.getAdminMessage());
-            logger.close();
-            return false;
-        }
-        logger.close();
+        temp = ext.getItem(barcode);
         ret = new Item(count, temp.itemPrice, temp.VAT, temp.itemDesc, temp.itemID);
         return saleToAddTo.addItem(ret, ext);
 

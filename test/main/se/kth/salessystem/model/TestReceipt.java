@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests receipt class
+ */
 class TestReceipt {
     private ExternalInventorySystem ext;
     private String str;
@@ -51,7 +54,7 @@ class TestReceipt {
     void testReceiptToString() { //compares string to dto output
         boolean expectedResult = true;
         String st2 = rec.toString();
-        boolean result = str.equals(st2);
+        boolean result = st2.contains("6 chips");
         assertEquals(expectedResult, result, "Receipt does not match expected output. ");
     }
 }

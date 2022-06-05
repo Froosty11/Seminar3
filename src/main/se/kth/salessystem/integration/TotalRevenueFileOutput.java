@@ -1,4 +1,6 @@
-package main.se.kth.salessystem.model;
+package main.se.kth.salessystem.integration;
+
+import main.se.kth.salessystem.model.Observer;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -8,12 +10,12 @@ import java.io.PrintWriter;
  * Stores/prints to a txt file. Txt file gets wiped upon restart of program- in theory the file would be
  * backuped after each workday
  */
-public class TotalRevenueFileOutput implements Observer{
+public class TotalRevenueFileOutput implements Observer {
     String fileLoc = "";
     double amount;
     public TotalRevenueFileOutput(){
         amount = 0;
-        fileLoc = "src/main/se/kth/salessystem/model/totalRevenue.txt";
+        fileLoc = "src/main/se/kth/salessystem/integration/totalRevenue.txt";
 
     }
 

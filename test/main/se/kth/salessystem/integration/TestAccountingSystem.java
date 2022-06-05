@@ -4,12 +4,16 @@ import main.se.kth.salessystem.dtos.SaleDTO;
 import main.se.kth.salessystem.integration.AccountingSystem;
 import main.se.kth.salessystem.integration.ExternalInventorySystem;
 import main.se.kth.salessystem.model.Sale;
+import main.se.kth.salessystem.view.TotalRevenueView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * AccountingSystems test.
+ */
 class TestAccountingSystem {
     private Controller ctrl;
     private AccountingSystem ac;
@@ -19,10 +23,11 @@ class TestAccountingSystem {
      * Setups for potential AC-testing
      */
     @BeforeEach
-    void setUp() { //Happens before each se.kth.salessystem.test
-        ctrl = new Controller();
+    void setUp() throws DatabaseNotFoundException, ItemNotFoundException { //Happens before each se.kth.salessystem.test
+        ctrl = new Controller(new TotalRevenueFileOutput(), new TotalRevenueView());
         ac = new AccountingSystem();
         Sale temp = new Sale();
+        ctrl.startNewSale(69);
         ctrl.addItem(3, 2);
         dto = temp.endSale("uwu", "kassa 2");
     }
@@ -47,6 +52,7 @@ class TestAccountingSystem {
     void testGetSaleDTO() { // makes sure the dto contains all important information after getting
         boolean expected = true;
         ac.registerSale(dto);
+
         boolean result = dto.equal(ac.getSaleDTO(dto.getSaleID()));
         //for some reason @override doesnt work here idk
         assertEquals(expected, result, "getSaleDTO failed");
