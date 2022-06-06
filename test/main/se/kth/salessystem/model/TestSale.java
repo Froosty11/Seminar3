@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.engine.ExecutionRequest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 /**
  * tests sale class
@@ -22,6 +23,7 @@ class TestSale {
     void setUp() {
         sale = new Sale();
         ac = new AccountingSystem();
+        sale.addItems(1,1, ExternalInventorySystem.getInstance());
 
     }
 
@@ -29,6 +31,7 @@ class TestSale {
     void testAddItem() { // not working atm due to ItemScanner implementation
         boolean result = false;
         Sale newSale = new Sale();
+        newSale.addItems(1, 1, ExternalInventorySystem.getInstance());
         SaleDTO sDto = sale.endSale("","");
         SaleDTO nDTO = newSale.endSale("","");
         if(nDTO.getItems().get(0).itemID == sDto.getItems().get(0).itemID){

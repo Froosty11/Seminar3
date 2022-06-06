@@ -2,7 +2,9 @@ package main.se.kth.salessystem.model;
 
 
 import main.se.kth.salessystem.dtos.SaleDTO;
+import main.se.kth.salessystem.integration.DatabaseNotFoundException;
 import main.se.kth.salessystem.integration.ExternalInventorySystem;
+import main.se.kth.salessystem.integration.ItemNotFoundException;
 import main.se.kth.salessystem.view.TotalRevenueView;
 
 import java.util.ArrayList;
@@ -74,10 +76,18 @@ public class Sale {
      * @return true if all items exist inStock.
      */
     boolean addItems(int itemID, int quantity, ExternalInventorySystem ext) {
+        Item temp = null;
+        try{
+            temp = ext.getItem(itemID);}
+        catch (DatabaseNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (ItemNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         boolean addItemWasSuccess = false;
-        if (ext.inStock(itemID, quantity)) {
+        if (ext.inStock(itemID, quantity) && temp != null) {
             for (int i = 0; i < quantity; i++) {
-                addItemWasSuccess = this.addItems(itemID, 1, ext);
+                addItemWasSuccess = this.addItem(temp, ext);
             }
         }
         return addItemWasSuccess;
